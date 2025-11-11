@@ -24,12 +24,22 @@
    - EmotionRecordRepository.swift (CRUD 메서드)
    - CRUD 테스트 완료 (저장/조회/삭제 검증)
 
+4. **OCR 서비스 구현**
+   - VisionOCRService.swift (Vision Framework 기반)
+   - 한글 텍스트 인식 (정확도 ~89%)
+   - 비동기 처리 지원
+   - 실제 대화 이미지 테스트 완료
+
+5. **OpenAI API 서비스 구현**
+   - APIConfiguration.swift (xcconfig 연동)
+   - OpenAIService.swift (gpt-4o-mini 감정 분석)
+   - 요청/응답 구조체 정의
+   - 실제 API 테스트 완료 (맥락 이해 우수)
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-4. **OCR 서비스 구현** (VisionOCRService)
-5. **OpenAI API 서비스 구현** (OpenAIService, APIConfiguration)
 6. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
 7. **ViewModels 구현** (Home, Analysis, History, Settings)
 8. **Launch & Onboarding Views** (LaunchView, OnboardingView)

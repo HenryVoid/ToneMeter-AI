@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var ocrResult: String = ""
-  @State private var isProcessing: Bool = false
+  @State private var testResult: String = ""
+  @State private var isAnalyzing: Bool = false
   
   var body: some View {
     VStack(spacing: 20) {
-      // OCR 테스트 버튼
-      Button("OCR 테스트") {
-        testOCR()
+      // 감정 분석 테스트 버튼
+      Button("감정 분석 테스트") {
+        testEmotionAnalysis()
       }
-      .disabled(isProcessing)
+      .disabled(isAnalyzing)
       
-      if isProcessing {
-        ProgressView("처리 중...")
+      if isAnalyzing {
+        ProgressView("분석 중...")
       }
       
       // 결과 표시
-      if !ocrResult.isEmpty {
+      if !testResult.isEmpty {
         ScrollView {
-          Text(ocrResult)
+          Text(testResult)
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.gray.opacity(0.1))
+            .background(Color.blue.opacity(0.1))
             .cornerRadius(8)
         }
       }
@@ -37,37 +37,47 @@ struct ContentView: View {
     .padding()
   }
   
-  func testOCR() {
-    isProcessing = true
+  func testEmotionAnalysis() {
+    isAnalyzing = true
+    
+    // 테스트 텍스트 (OCR 결과 예시)
+    let testText = """
+        오빠 집이에요?
+        저 오빠집 앞인데 잠깐 볼수 잇을까요?
+        아돼지어딘데
+        돼지라뇨 말이 심하시네요
+        된다고돼지가아니라
+        아 괜히 찔려가지고
+        """
     
     Task {
       do {
-        // 테스트 이미지 (Assets.xcassets에 추가한 이미지)
-        guard let testImage = UIImage(named: "test_conversation") else {
-          print("❌ 테스트 이미지를 찾을 수 없습니다")
-          isProcessing = false
-          return
-        }
-        
-        let ocrService = VisionOCRService()
-        let text = try await ocrService.recognizeText(from: testImage)
+        let apiService = OpenAIService()
+        let result = try await apiService.analyzeTone(text: testText)
         
         await MainActor.run {
-          ocrResult = text
-          isProcessing = false
-          print("✅ OCR 성공:\n\(text)")
+          testResult = """
+                    ✅ 감정 분석 완료
+                    
+                    📊 점수: \(result.toneScore)/100
+                    🏷️ 레이블: \(result.toneLabel)
+                    🔑 키워드: \(result.toneKeywords.joined(separator: ", "))
+                    💡 분석: \(result.reasoning ?? "없음")
+                    """
+          isAnalyzing = false
+          print("✅ 분석 성공: \(result)")
         }
         
-      } catch let error as OCRError {
+      } catch let error as APIError {
         await MainActor.run {
-          ocrResult = "에러: \(error.errorDescription ?? "알 수 없는 오류")"
-          isProcessing = false
+          testResult = "❌ API 에러: \(error.errorDescription ?? "알 수 없는 오류")"
+          isAnalyzing = false
         }
-        print("❌ OCR 에러: \(error)")
+        print("❌ API 에러: \(error)")
       } catch {
         await MainActor.run {
-          ocrResult = "에러: \(error.localizedDescription)"
-          isProcessing = false
+          testResult = "❌ 에러: \(error.localizedDescription)"
+          isAnalyzing = false
         }
         print("❌ 에러: \(error)")
       }
