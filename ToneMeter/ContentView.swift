@@ -8,107 +8,69 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var id: UUID? = nil
-  
+  @State private var ocrResult: String = ""
+  @State private var isProcessing: Bool = false
   
   var body: some View {
-    VStack(spacing: 30) {
-      Button("DB 저장 테스트") {
-        saveTestDatabase()
+    VStack(spacing: 20) {
+      // OCR 테스트 버튼
+      Button("OCR 테스트") {
+        testOCR()
+      }
+      .disabled(isProcessing)
+      
+      if isProcessing {
+        ProgressView("처리 중...")
       }
       
-      Button("DB 삭제 테스트") {
-        if let id {
-          deleteTestDatabase(id)
-        } else {
-          print("⚠️ 먼저 저장해주세요")
+      // 결과 표시
+      if !ocrResult.isEmpty {
+        ScrollView {
+          Text(ocrResult)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(8)
         }
       }
-      
-      Button("모든 DB 조회") {
-        fetchAllRecords()
-      }
-      
-      Button("모든 DB 제거") {
-        deleteAllRecords()
-      }
     }
+    .padding()
   }
   
-  func saveTestDatabase() {
-    let repo = EmotionRecordRepository()
-    let newID = UUID()
+  func testOCR() {
+    isProcessing = true
     
-    // 테스트 데이터 생성
-    let testRecord = EmotionRecord(
-      id: newID,
-      createdAt: Date(),
-      imagePath: "/test/path.jpg",
-      ocrText: "안녕하세요 좋은 하루입니다",
-      toneScore: 85.5,
-      toneLabel: "Positive",
-      toneKeywords: "[\"기쁨\", \"밝음\"]",
-      modelVersion: "gpt-4o-mini"
-    )
-    
-    do {
-      // 저장
-      try repo.insert(testRecord)
-      id = newID
-      print("✅ 저장 성공 - id: \(newID)")
-      
-      // 조회
-      let records = try repo.fetchAll()
-      print("✅ 조회 성공: \(records.count)개")
-    } catch {
-      print("❌ 에러: \(error)")
-    }
-  }
-  
-  func deleteTestDatabase(_ id: UUID) {
-    let repo = EmotionRecordRepository()
-    
-    do {
-      // 저장
-      print("🗑️ 삭제 시도 - ID: \(id)")
-      try repo.delete(id.uuidString)
-      print("✅ 삭제 성공")
-      
-      // 조회
-      let records = try repo.fetchAll()
-      print("✅ 조회 성공: \(records.count)개")
-    } catch {
-      print("❌ 에러: \(error)")
-    }
-  }
-  
-  func fetchAllRecords() {
-    let repo = EmotionRecordRepository()
-    do {
-      let records = try repo.fetchAll()
-      print("📊 전체 레코드: \(records.count)개")
-      records.forEach { record in
-        print("  - ID: \(record.id)")
-        print("    Text: \(record.ocrText)")
-        print("    Score: \(record.toneScore)")
+    Task {
+      do {
+        // 테스트 이미지 (Assets.xcassets에 추가한 이미지)
+        guard let testImage = UIImage(named: "test_conversation") else {
+          print("❌ 테스트 이미지를 찾을 수 없습니다")
+          isProcessing = false
+          return
+        }
+        
+        let ocrService = VisionOCRService()
+        let text = try await ocrService.recognizeText(from: testImage)
+        
+        await MainActor.run {
+          ocrResult = text
+          isProcessing = false
+          print("✅ OCR 성공:\n\(text)")
+        }
+        
+      } catch let error as OCRError {
+        await MainActor.run {
+          ocrResult = "에러: \(error.errorDescription ?? "알 수 없는 오류")"
+          isProcessing = false
+        }
+        print("❌ OCR 에러: \(error)")
+      } catch {
+        await MainActor.run {
+          ocrResult = "에러: \(error.localizedDescription)"
+          isProcessing = false
+        }
+        print("❌ 에러: \(error)")
       }
-    } catch {
-      print("❌ 에러: \(error)")
-    }
-  }
-  
-  func deleteAllRecords() {
-    let repo = EmotionRecordRepository()
-    do {
-      try repo.deleteAll()
-      let records = try repo.fetchAll()
-      print("📊 전체 레코드: \(records.count)개")
-    } catch {
-      print("❌ 에러: \(error)")
     }
   }
 }
-
-//#Preview {
-//  ContentView()
-//}
