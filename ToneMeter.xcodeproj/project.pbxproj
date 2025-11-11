@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		6CDBE6072EC2B65D00F4D497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CDBE5EE2EC2B65B00F4D497 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CDBE5F52EC2B65B00F4D497;
+			remoteInfo = ToneMeter;
+		};
+		6CDBE6112EC2B65D00F4D497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CDBE5EE2EC2B65B00F4D497 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CDBE5F52EC2B65B00F4D497;
+			remoteInfo = ToneMeter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneMeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CDBE6062EC2B65D00F4D497 /* ToneMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CDBE6102EC2B65D00F4D497 /* ToneMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6CDBE5F82EC2B65B00F4D497 /* ToneMeter */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ToneMeter;
+			sourceTree = "<group>";
+		};
+		6CDBE6092EC2B65D00F4D497 /* ToneMeterTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ToneMeterTests;
+			sourceTree = "<group>";
+		};
+		6CDBE6132EC2B65D00F4D497 /* ToneMeterUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ToneMeterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6CDBE5F32EC2B65B00F4D497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE6032EC2B65D00F4D497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE60D2EC2B65D00F4D497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6CDBE5ED2EC2B65B00F4D497 = {
+			isa = PBXGroup;
+			children = (
+				6CDBE5F82EC2B65B00F4D497 /* ToneMeter */,
+				6CDBE6092EC2B65D00F4D497 /* ToneMeterTests */,
+				6CDBE6132EC2B65D00F4D497 /* ToneMeterUITests */,
+				6CDBE5F72EC2B65B00F4D497 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6CDBE5F72EC2B65B00F4D497 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */,
+				6CDBE6062EC2B65D00F4D497 /* ToneMeterTests.xctest */,
+				6CDBE6102EC2B65D00F4D497 /* ToneMeterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6CDBE5F52EC2B65B00F4D497 /* ToneMeter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CDBE61A2EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeter" */;
+			buildPhases = (
+				6CDBE5F22EC2B65B00F4D497 /* Sources */,
+				6CDBE5F32EC2B65B00F4D497 /* Frameworks */,
+				6CDBE5F42EC2B65B00F4D497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6CDBE5F82EC2B65B00F4D497 /* ToneMeter */,
+			);
+			name = ToneMeter;
+			packageProductDependencies = (
+			);
+			productName = ToneMeter;
+			productReference = 6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6CDBE6052EC2B65D00F4D497 /* ToneMeterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CDBE61D2EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeterTests" */;
+			buildPhases = (
+				6CDBE6022EC2B65D00F4D497 /* Sources */,
+				6CDBE6032EC2B65D00F4D497 /* Frameworks */,
+				6CDBE6042EC2B65D00F4D497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6CDBE6082EC2B65D00F4D497 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6CDBE6092EC2B65D00F4D497 /* ToneMeterTests */,
+			);
+			name = ToneMeterTests;
+			packageProductDependencies = (
+			);
+			productName = ToneMeterTests;
+			productReference = 6CDBE6062EC2B65D00F4D497 /* ToneMeterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6CDBE60F2EC2B65D00F4D497 /* ToneMeterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CDBE6202EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeterUITests" */;
+			buildPhases = (
+				6CDBE60C2EC2B65D00F4D497 /* Sources */,
+				6CDBE60D2EC2B65D00F4D497 /* Frameworks */,
+				6CDBE60E2EC2B65D00F4D497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6CDBE6122EC2B65D00F4D497 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6CDBE6132EC2B65D00F4D497 /* ToneMeterUITests */,
+			);
+			name = ToneMeterUITests;
+			packageProductDependencies = (
+			);
+			productName = ToneMeterUITests;
+			productReference = 6CDBE6102EC2B65D00F4D497 /* ToneMeterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6CDBE5EE2EC2B65B00F4D497 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					6CDBE5F52EC2B65B00F4D497 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6CDBE6052EC2B65D00F4D497 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6CDBE5F52EC2B65B00F4D497;
+					};
+					6CDBE60F2EC2B65D00F4D497 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6CDBE5F52EC2B65B00F4D497;
+					};
+				};
+			};
+			buildConfigurationList = 6CDBE5F12EC2B65B00F4D497 /* Build configuration list for PBXProject "ToneMeter" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6CDBE5ED2EC2B65B00F4D497;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6CDBE5F72EC2B65B00F4D497 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6CDBE5F52EC2B65B00F4D497 /* ToneMeter */,
+				6CDBE6052EC2B65D00F4D497 /* ToneMeterTests */,
+				6CDBE60F2EC2B65D00F4D497 /* ToneMeterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6CDBE5F42EC2B65B00F4D497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE6042EC2B65D00F4D497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE60E2EC2B65D00F4D497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6CDBE5F22EC2B65B00F4D497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE6022EC2B65D00F4D497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CDBE60C2EC2B65D00F4D497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6CDBE6082EC2B65D00F4D497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CDBE5F52EC2B65B00F4D497 /* ToneMeter */;
+			targetProxy = 6CDBE6072EC2B65D00F4D497 /* PBXContainerItemProxy */;
+		};
+		6CDBE6122EC2B65D00F4D497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CDBE5F52EC2B65B00F4D497 /* ToneMeter */;
+			targetProxy = 6CDBE6112EC2B65D00F4D497 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6CDBE6182EC2B65D00F4D497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6CDBE6192EC2B65D00F4D497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6CDBE61B2EC2B65D00F4D497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ToneMeter/Preview Content\"";
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6CDBE61C2EC2B65D00F4D497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ToneMeter/Preview Content\"";
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6CDBE61E2EC2B65D00F4D497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneMeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneMeter";
+			};
+			name = Debug;
+		};
+		6CDBE61F2EC2B65D00F4D497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneMeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneMeter";
+			};
+			name = Release;
+		};
+		6CDBE6212EC2B65D00F4D497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ToneMeter;
+			};
+			name = Debug;
+		};
+		6CDBE6222EC2B65D00F4D497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L56LNTR7PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ToneMeter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6CDBE5F12EC2B65B00F4D497 /* Build configuration list for PBXProject "ToneMeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CDBE6182EC2B65D00F4D497 /* Debug */,
+				6CDBE6192EC2B65D00F4D497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CDBE61A2EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CDBE61B2EC2B65D00F4D497 /* Debug */,
+				6CDBE61C2EC2B65D00F4D497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CDBE61D2EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CDBE61E2EC2B65D00F4D497 /* Debug */,
+				6CDBE61F2EC2B65D00F4D497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CDBE6202EC2B65D00F4D497 /* Build configuration list for PBXNativeTarget "ToneMeterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CDBE6212EC2B65D00F4D497 /* Debug */,
+				6CDBE6222EC2B65D00F4D497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6CDBE5EE2EC2B65B00F4D497 /* Project object */;
+}
