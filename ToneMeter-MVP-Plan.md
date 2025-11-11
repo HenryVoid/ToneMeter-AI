@@ -43,22 +43,32 @@
    - 에러 처리 검증 (noTextFound)
    - 성능 측정 (전체 2.6초)
 
+7. **ViewModel 구현 (MVVM 패턴)**
+   - AnalysisViewModel.swift (@Published 상태 관리)
+   - AnalysisStep enum (진행 단계 추적)
+   - AnalysisView.swift (반응형 UI)
+   - FlowLayout (키워드 배치)
+   - 에러 처리 UI (빨간 박스)
+   - 진행 상태 UI (3단계 표시)
+   - 결과 화면 UI (점수, 레이블, 키워드, 근거)
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-7. **ViewModels 구현** (Home, Analysis, History, Settings)
-8. **Launch & Onboarding Views** (LaunchView, OnboardingView)
-9. **Main Tab & Home View** (ToneMeterTabView, HomeView, ToneMeterGauge)
-10. **Analysis Flow Views** (ImagePicker 개선, OcrProcessing, AnalysisView)
-11. **History Views** (HistoryView, DetailView, EmotionChart)
-12. **Settings View** (SettingsView)
-13. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
-14. **Theme Colors** (Color+Theme extension)
-15. **Permissions** (권한 요청 로직)
-16. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
-17. **Firebase Setup Guide** (문서 작성)
-18. **README** (프로젝트 문서화)
+8. **ToneMeterTabView 구현** (Home, History, Settings 탭)
+9. **HomeView + 미터기 UI** (메인 화면, Gauge 컴포넌트)
+10. **HistoryViewModel 구현** (기록 관리)
+11. **HistoryView** (분석 기록 리스트)
+12. **DetailView** (개별 기록 상세보기)
+13. **SettingsViewModel + SettingsView** (설정 화면)
+14. **Launch & Onboarding Views** (LaunchView, OnboardingView)
+15. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
+16. **Theme Colors** (Color+Theme extension)
+17. **Permissions** (권한 요청 로직)
+18. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+19. **Firebase Setup Guide** (문서 작성)
+20. **README** (프로젝트 문서화)
 
 ---
 
