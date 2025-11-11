@@ -3,6 +3,48 @@
 ## 개요
 대화 캡처 → OCR → 감정톤 분석 → 미터기 UI 표시를 구현하는 서버리스 SwiftUI + MVVM 기반 iOS 앱 개발. GRDB 로컬 저장, Firebase Analytics/Crashlytics, OpenAI API 연동 포함.
 
+---
+
+## 📋 Todolist 진행 상황
+
+### ✅ 완료
+1. **프로젝트 구조 및 의존성 설정**
+   - SPM으로 GRDB.swift, Firebase SDK 추가
+   - 디렉토리 구조 생성 (Models, Services, ViewModels, Views, Utilities)
+   - Info.plist 권한 설정 추가
+
+2. **xcconfig 및 .gitignore 설정**
+   - Config.xcconfig 파일 생성 (API 키 관리)
+   - .gitignore 업데이트 (Config.xcconfig, GoogleService-Info.plist 제외)
+
+3. **데이터 레이어 구현**
+   - EmotionRecord.swift (GRDB 모델)
+   - ToneAnalysisResult.swift (API 응답 모델)
+   - DatabaseManager.swift (GRDB 초기화 및 마이그레이션)
+   - EmotionRecordRepository.swift (CRUD 메서드)
+   - CRUD 테스트 완료 (저장/조회/삭제 검증)
+
+### 🔄 진행 중
+- 없음
+
+### ⏳ 대기 중
+4. **OCR 서비스 구현** (VisionOCRService)
+5. **OpenAI API 서비스 구현** (OpenAIService, APIConfiguration)
+6. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+7. **ViewModels 구현** (Home, Analysis, History, Settings)
+8. **Launch & Onboarding Views** (LaunchView, OnboardingView)
+9. **Main Tab & Home View** (ToneMeterTabView, HomeView, ToneMeterGauge)
+10. **Analysis Flow Views** (ImagePicker, OcrProcessing, AnalysisView)
+11. **History Views** (HistoryView, DetailView, EmotionChart)
+12. **Settings View** (SettingsView)
+13. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
+14. **Theme Colors** (Color+Theme extension)
+15. **Permissions** (권한 요청 로직)
+16. **Firebase Setup Guide** (문서 작성)
+17. **README** (프로젝트 문서화)
+
+---
+
 ## 1. 프로젝트 구조 및 의존성 설정
 
 ### 디렉토리 구조
