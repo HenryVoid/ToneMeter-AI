@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6242EC2C26600F4D497 /* GRDB */; };
+		6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */; };
+		6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		6CDBE6072EC2B65D00F4D497 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */,
+				6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */,
+				6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = ToneMeter;
 			packageProductDependencies = (
+				6CDBE6242EC2C26600F4D497 /* GRDB */,
+				6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */,
+				6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */,
 			);
 			productName = ToneMeter;
 			productReference = 6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */;
@@ -195,6 +207,10 @@
 			);
 			mainGroup = 6CDBE5ED2EC2B65B00F4D497;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6CDBE6232EC2C26600F4D497 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6CDBE5F72EC2B65B00F4D497 /* Products */;
 			projectDirPath = "";
@@ -572,6 +588,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6CDBE6232EC2C26600F4D497 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+		6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6CDBE6242EC2C26600F4D497 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDBE6232EC2C26600F4D497 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6CDBE5EE2EC2B65B00F4D497 /* Project object */;
 }
