@@ -36,22 +36,29 @@
    - 요청/응답 구조체 정의
    - 실제 API 테스트 완료 (맥락 이해 우수)
 
+6. **전체 플로우 통합 테스트**
+   - 이미지 선택 → OCR → 감정 분석 → DB 저장 E2E 검증
+   - ImagePicker 구현 (PHPicker)
+   - 이미지 로컬 저장 로직
+   - 에러 처리 검증 (noTextFound)
+   - 성능 측정 (전체 2.6초)
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-6. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
 7. **ViewModels 구현** (Home, Analysis, History, Settings)
 8. **Launch & Onboarding Views** (LaunchView, OnboardingView)
 9. **Main Tab & Home View** (ToneMeterTabView, HomeView, ToneMeterGauge)
-10. **Analysis Flow Views** (ImagePicker, OcrProcessing, AnalysisView)
+10. **Analysis Flow Views** (ImagePicker 개선, OcrProcessing, AnalysisView)
 11. **History Views** (HistoryView, DetailView, EmotionChart)
 12. **Settings View** (SettingsView)
 13. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
 14. **Theme Colors** (Color+Theme extension)
 15. **Permissions** (권한 요청 로직)
-16. **Firebase Setup Guide** (문서 작성)
-17. **README** (프로젝트 문서화)
+16. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+17. **Firebase Setup Guide** (문서 작성)
+18. **README** (프로젝트 문서화)
 
 ---
 
