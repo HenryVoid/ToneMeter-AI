@@ -35,9 +35,22 @@
 		6CDBE6102EC2B65D00F4D497 /* ToneMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6CDBE6432EC2C54400F4D497 /* Exceptions for "ToneMeter" folder in "ToneMeter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6CDBE5F52EC2B65B00F4D497 /* ToneMeter */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6CDBE5F82EC2B65B00F4D497 /* ToneMeter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6CDBE6432EC2C54400F4D497 /* Exceptions for "ToneMeter" folder in "ToneMeter" target */,
+			);
 			path = ToneMeter;
 			sourceTree = "<group>";
 		};
@@ -421,8 +434,11 @@
 				DEVELOPMENT_TEAM = L56LNTR7PZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToneMeter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ToneMeter AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "실시간 대화를 촬영하여 분석하기 위해 카메라 접근이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "대화 이미지를 분석하기 위해 사진 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -459,8 +475,11 @@
 				DEVELOPMENT_TEAM = L56LNTR7PZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToneMeter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ToneMeter AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "실시간 대화를 촬영하여 분석하기 위해 카메라 접근이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "대화 이미지를 분석하기 위해 사진 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
