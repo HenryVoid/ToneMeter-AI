@@ -67,13 +67,29 @@ class PermissionManager: ObservableObject {
       await MainActor.run {
         self.photoLibraryStatus = status
       }
-      return status == .authorized || status == .limited
+      
+      // Analytics: 권한 결과 기록
+      let isGranted = status == .authorized || status == .limited
+      AnalyticsLogger.shared.logPhotoLibraryPermission(
+        granted: isGranted,
+        authorizationStatus: "\(status.rawValue)"
+      )
+      
+      return isGranted
     } else {
       return await withCheckedContinuation { continuation in
         PHPhotoLibrary.requestAuthorization { status in
           DispatchQueue.main.async {
             self.photoLibraryStatus = status
-            continuation.resume(returning: status == .authorized)
+            
+            // Analytics: 권한 결과 기록
+            let isGranted = status == .authorized
+            AnalyticsLogger.shared.logPhotoLibraryPermission(
+              granted: isGranted,
+              authorizationStatus: "\(status.rawValue)"
+            )
+            
+            continuation.resume(returning: isGranted)
           }
         }
       }
@@ -86,6 +102,10 @@ class PermissionManager: ObservableObject {
       AVCaptureDevice.requestAccess(for: .video) { granted in
         DispatchQueue.main.async {
           self.checkCameraPermission()
+          
+          // Analytics: 카메라 권한 결과 기록
+          AnalyticsLogger.shared.logCameraPermission(granted: granted)
+          
           continuation.resume(returning: granted)
         }
       }

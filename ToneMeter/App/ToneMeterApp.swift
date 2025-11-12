@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct ToneMeterApp: App {
+  // Firebase 초기화를 위한 AppDelegate 연결
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  
   @AppStorage(UserDefaultsKeys.hasCompletedOnboarding)
   private var hasCompletedOnboarding = false
   
@@ -31,10 +34,10 @@ struct ToneMeterApp: App {
         }
       }
       .onAppear {
-        #if DEBUG
+#if DEBUG
         // ⚠️ 테스트용 (테스트 후 삭제!)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.hasCompletedOnboarding)
-        #endif
+#endif
         // Launch Screen 표시 시간 (1.5초)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           withAnimation(.easeOut(duration: 0.3)) {

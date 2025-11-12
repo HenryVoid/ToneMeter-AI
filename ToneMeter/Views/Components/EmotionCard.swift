@@ -49,7 +49,7 @@ struct EmotionCard: View {
       Text(value)
         .font(.title2)
         .bold()
-        .foregroundColor(Color.textPrimary)
+        .foregroundColor(Color.textBlack)
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding()

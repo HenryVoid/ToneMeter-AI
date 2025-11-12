@@ -85,6 +85,8 @@ struct OnboardingView: View {
             
             // 건너뛰기 버튼
             Button {
+              // Analytics: 온보딩 건너뛰기
+              AnalyticsLogger.shared.logOnboardingSkipped(currentPage: currentPage)
               completeOnboarding()
             } label: {
               Text("건너뛰기")
@@ -123,8 +125,10 @@ struct OnboardingView: View {
       hasCompletedOnboarding = true
     }
     
-    // Firebase Analytics 이벤트 (선택)
-    // Analytics.logEvent("onboarding_completed", parameters: nil)
+    // Analytics: 온보딩 완료
+    AnalyticsLogger.shared.logOnboardingCompleted(
+      photoPermission: permissionManager.isPhotoLibraryAuthorized
+    )
   }
   
   // MARK: - Data

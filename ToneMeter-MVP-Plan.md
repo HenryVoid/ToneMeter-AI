@@ -135,13 +135,106 @@
    - 사진 라이브러리 권한 요청 구현
    - 설정 앱 이동 기능
 
+17. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+   - AppDelegate.swift 생성 (Firebase 초기화)
+   - FirebaseApp.configure() 호출
+   - ToneMeterApp에 UIApplicationDelegateAdaptor 연결
+   - 기본 Analytics 이벤트 기록 (app_launch, app_background, app_foreground)
+   - Debug/Release 모드 구분 로깅
+   - Firebase SDK 연동 확인 (FirebaseAnalytics, FirebaseCrashlytics)
+
+18. **Firebase Setup Guide** (문서 작성)
+   - Firebase-Setup-Guide.md 작성
+   - Firebase 프로젝트 생성 가이드
+   - iOS 앱 추가 및 Bundle ID 설정
+   - GoogleService-Info.plist 설정 방법
+   - Firebase SDK 설치 확인
+   - Analytics 이벤트 확인 방법
+   - Crashlytics 설정 (옵션)
+   - 문제 해결 섹션
+   - 체크리스트 포함
+
+19. **README** (프로젝트 문서화)
+   - README.md 작성
+   - 프로젝트 개요 및 주요 기능
+   - 기술 스택 표
+   - 프로젝트 구조 다이어그램
+   - 시작하기 가이드 (API 키 설정, Firebase 설정)
+   - 사용 방법 (온보딩, 분석, 기록, 설정)
+   - 데이터 구조 설명
+   - 테스트 리포트 링크
+   - 디자인 시스템 (색상 팔레트, 컴포넌트)
+   - Git Flow 및 기여 가이드
+   - 라이선스 정보
+
+20. **Analytics 이벤트 추가** (Firebase Analytics 통합)
+   - AnalysisViewModel에 OCR/분석 이벤트 추가
+   - OnboardingView에 온보딩 이벤트 추가
+   - PermissionManager에 권한 이벤트 추가
+   - HistoryViewModel에 기록 관리 이벤트 추가
+   - Firebase-Analytics-Events.md 문서 작성
+   - 총 18개 이벤트 구현 완료
+   - README.md에 Analytics 섹션 추가
+
+21. **AnalyticsLogger 클래스** (중앙 집중식 Analytics 관리)
+   - AnalyticsLogger.swift 싱글톤 클래스 생성
+   - 모든 Analytics 이벤트를 메서드로 정의 (20개)
+   - FirebaseAnalytics import는 AnalyticsLogger에서만
+   - 모든 ViewModel/View에서 AnalyticsLogger.shared 사용
+   - FirebaseAnalytics import 제거 (4개 파일)
+   - 깔끔하고 유지보수 용이한 구조 완성
+
+22. **Crashlytics 적용** (앱 안정성 모니터링)
+   - AnalyticsLogger에 Crashlytics 메서드 추가
+   - SettingsViewModel에 테스트 메서드 추가 (Debug 모드)
+   - SettingsView에 Crashlytics 테스트 섹션 추가
+   - 테스트 크래시 발생 기능
+   - 테스트 에러 전송 기능
+   - 커스텀 로그 전송 기능
+   - 자동 에러 로깅 (AnalyticsLogger.logAnalysisError)
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-17. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
-18. **Firebase Setup Guide** (문서 작성)
-19. **README** (프로젝트 문서화)
+- 없음 (모든 MVP 기능 완료! 🎉)
+
+---
+
+## 📊 완료된 Analytics 이벤트 (20개)
+
+### 앱 생명주기
+- `app_launch` (앱 시작)
+- `app_background` (백그라운드 전환)
+- `app_foreground` (포그라운드 전환)
+
+### 온보딩
+- `onboarding_completed` (온보딩 완료)
+- `onboarding_skipped` (온보딩 건너뛰기)
+
+### 권한
+- `permission_photo_library` (사진 권한)
+- `permission_camera` (카메라 권한)
+
+### OCR
+- `ocr_start` (OCR 시작)
+- `ocr_success` (OCR 성공)
+- `ocr_failed` (OCR 실패)
+
+### 감정 분석
+- `analysis_start` (분석 시작)
+- `analysis_success` (분석 성공)
+- `analysis_failed` (분석 실패)
+- `analysis_error` (전체 에러)
+
+### 기록 관리
+- `record_saved` (기록 저장)
+- `record_deleted` (기록 삭제)
+- `all_records_deleted` (전체 삭제)
+
+### 히스토리
+- `history_filter_changed` (필터 변경)
+- `history_sort_changed` (정렬 변경)
 
 ---
 

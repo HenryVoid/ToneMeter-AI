@@ -64,12 +64,18 @@ class HistoryViewModel: ObservableObject {
   func changeFilter(_ filter: FilterOption) {
     currentFilter = filter
     applyFilterAndSort()
+    
+    // Analytics: 필터 변경
+    AnalyticsLogger.shared.logHistoryFilterChanged(filter: "\(filter)")
   }
   
   /// 정렬 변경
   func changeSort(_ sort: SortOption) {
     currentSort = sort
     applyFilterAndSort()
+    
+    // Analytics: 정렬 변경
+    AnalyticsLogger.shared.logHistorySortChanged(sort: "\(sort)")
   }
   
   /// 기록 삭제
@@ -78,6 +84,12 @@ class HistoryViewModel: ObservableObject {
       try repository.delete(record.id.uuidString)
       await loadRecords()
       print("✅ 기록 삭제 완료: \(record.id)")
+      
+      // Analytics: 기록 삭제
+      AnalyticsLogger.shared.logRecordDeleted(
+        toneLabel: record.toneLabel,
+        toneScore: record.toneScore
+      )
     } catch {
       errorMessage = "삭제에 실패했습니다: \(error.localizedDescription)"
       print("❌ 삭제 에러: \(error)")
@@ -87,9 +99,13 @@ class HistoryViewModel: ObservableObject {
   /// 전체 삭제
   func deleteAllRecords() async {
     do {
+      let recordCount = records.count
       try repository.deleteAll()
       await loadRecords()
       print("✅ 전체 기록 삭제 완료")
+      
+      // Analytics: 전체 기록 삭제
+      AnalyticsLogger.shared.logAllRecordsDeleted(recordCount: recordCount)
     } catch {
       errorMessage = "삭제에 실패했습니다: \(error.localizedDescription)"
       print("❌ 삭제 에러: \(error)")

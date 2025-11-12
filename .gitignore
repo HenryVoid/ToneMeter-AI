@@ -117,6 +117,9 @@ secrets.swift
 # Swift Package Manager
 .swiftpm/
 
+# cursor AI
+ToneMeter-MVP-Plan.md
+
 # Xcode User State
 *.xcuserstate
 

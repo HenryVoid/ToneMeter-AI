@@ -11,6 +11,7 @@ struct SettingsView: View {
   @StateObject private var viewModel = SettingsViewModel()
   @State private var showDeleteAlert = false
   @State private var showClearCacheAlert = false
+  @State private var showCrashAlert = false
   
   var body: some View {
     NavigationView {
@@ -27,7 +28,12 @@ struct SettingsView: View {
         // 4. 지원 섹션
         supportSection
         
-        // 5. 개발자 정보
+        #if DEBUG
+        // 5. Crashlytics 테스트 (Debug 모드만)
+        crashlyticsSection
+        #endif
+        
+        // 6. 개발자 정보
         developerSection
       }
       .navigationTitle("설정")
@@ -57,6 +63,16 @@ struct SettingsView: View {
       } message: {
         Text("저장된 이미지 파일을 삭제합니다. 분석 기록은 유지됩니다.")
       }
+      #if DEBUG
+      .alert("테스트 크래시", isPresented: $showCrashAlert) {
+        Button("취소", role: .cancel) {}
+        Button("크래시 발생", role: .destructive) {
+          viewModel.triggerTestCrash()
+        }
+      } message: {
+        Text("앱이 강제 종료됩니다. Firebase Console에서 크래시 리포트를 확인할 수 있습니다.")
+      }
+      #endif
       .overlay {
         if let message = viewModel.successMessage {
           successToast(message)
@@ -175,6 +191,38 @@ struct SettingsView: View {
       Text("지원")
     }
   }
+  
+  #if DEBUG
+  /// Crashlytics 테스트 섹션 (Debug 모드만)
+  private var crashlyticsSection: some View {
+    Section {
+      // 테스트 크래시
+      Button(role: .destructive) {
+        showCrashAlert = true
+      } label: {
+        Label("테스트 크래시 발생", systemImage: "exclamationmark.triangle")
+      }
+      
+      // 테스트 에러 전송
+      Button {
+        viewModel.sendTestError()
+      } label: {
+        Label("테스트 에러 전송", systemImage: "xmark.circle")
+      }
+      
+      // 커스텀 로그 전송
+      Button {
+        viewModel.sendCustomLog()
+      } label: {
+        Label("커스텀 로그 전송", systemImage: "square.and.arrow.up")
+      }
+    } header: {
+      Text("Crashlytics 테스트 (Debug)")
+    } footer: {
+      Text("테스트 크래시는 앱을 강제 종료합니다. 크래시 리포트는 Firebase Console에서 확인할 수 있습니다.")
+    }
+  }
+  #endif
   
   /// 개발자 정보
   private var developerSection: some View {

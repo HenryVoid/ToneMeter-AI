@@ -72,6 +72,9 @@ class AnalysisViewModel: ObservableObject {
       currentStep = .performingOCR
       print("1️⃣ OCR 시작...")
       
+      // Analytics: OCR 시작
+      AnalyticsLogger.shared.logOCRStart()
+      
       ocrText = try await ocrService.recognizeText(from: image)
       
       guard !ocrText.isEmpty else {
@@ -80,13 +83,26 @@ class AnalysisViewModel: ObservableObject {
       
       print("✅ OCR 완료: \(ocrText.prefix(50))...")
       
+      // Analytics: OCR 성공
+      AnalyticsLogger.shared.logOCRSuccess(textLength: ocrText.count)
+      
       // 2단계: 감정 분석
       currentStep = .analyzingTone
       print("2️⃣ 감정 분석 시작...")
       
+      // Analytics: 감정 분석 시작
+      AnalyticsLogger.shared.logAnalysisStart()
+      
       analysisResult = try await apiService.analyzeTone(text: ocrText)
       
       print("✅ 감정 분석 완료: 점수 \(analysisResult!.toneScore)")
+      
+      // Analytics: 감정 분석 성공
+      AnalyticsLogger.shared.logAnalysisSuccess(
+        toneScore: analysisResult!.toneScore,
+        toneLabel: analysisResult!.toneLabel,
+        keywordCount: analysisResult!.toneKeywords.count
+      )
       
       // 3단계: DB 저장
       currentStep = .savingToDatabase
@@ -109,6 +125,12 @@ class AnalysisViewModel: ObservableObject {
       savedRecordId = record.id
       
       print("✅ DB 저장 완료")
+      
+      // Analytics: 기록 저장
+      AnalyticsLogger.shared.logRecordSaved(
+        toneScore: record.toneScore,
+        toneLabel: record.toneLabel
+      )
       
       // 완료
       currentStep = .completed
@@ -172,18 +194,43 @@ class AnalysisViewModel: ObservableObject {
   private func handleError(_ error: Error) {
     currentStep = .failed
     
+    // Analytics: 에러 기록
+    var errorType = "unknown"
+    var errorDescription = error.localizedDescription
+    
     if let ocrError = error as? OCRError {
+      errorType = "ocr_error"
       errorMessage = ocrError.errorDescription
-      print("❌ OCR 에러: \(ocrError.errorDescription ?? "")")
+      errorDescription = ocrError.errorDescription ?? ""
+      print("❌ OCR 에러: \(errorDescription)")
+      
+      // Analytics: OCR 실패
+      AnalyticsLogger.shared.logOCRFailed(error: errorDescription)
     } else if let apiError = error as? APIError {
+      errorType = "api_error"
       errorMessage = apiError.errorDescription
-      print("❌ API 에러: \(apiError.errorDescription ?? "")")
+      errorDescription = apiError.errorDescription ?? ""
+      print("❌ API 에러: \(errorDescription)")
+      
+      // Analytics: 감정 분석 실패
+      AnalyticsLogger.shared.logAnalysisFailed(error: errorDescription)
     } else if let analysisError = error as? AnalysisError {
+      errorType = "analysis_error"
       errorMessage = analysisError.errorDescription
-      print("❌ 분석 에러: \(analysisError.errorDescription ?? "")")
+      errorDescription = analysisError.errorDescription ?? ""
+      print("❌ 분석 에러: \(errorDescription)")
+      
+      // Analytics: 일반 분석 실패
+      AnalyticsLogger.shared.logAnalysisFailed(error: errorDescription)
     } else {
       errorMessage = "알 수 없는 오류가 발생했습니다: \(error.localizedDescription)"
       print("❌ 알 수 없는 에러: \(error)")
     }
+    
+    // Analytics: 전체 에러 추적
+    AnalyticsLogger.shared.logAnalysisError(
+      errorType: errorType,
+      errorDescription: errorDescription
+    )
   }
 }

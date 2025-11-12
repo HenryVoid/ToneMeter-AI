@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import FirebaseCrashlytics
 
 /// 설정 화면을 관리하는 ViewModel
 @MainActor
@@ -136,4 +137,50 @@ class SettingsViewModel: ObservableObject {
     let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
     return "\(version) (\(build))"
   }
+  
+  // MARK: - Crashlytics (Debug Only)
+  
+  #if DEBUG
+  /// 테스트 크래시 발생 (Debug 모드 전용)
+  func triggerTestCrash() {
+    print("🔥 테스트 크래시 발생!")
+    Crashlytics.crashlytics().log("User triggered test crash from Settings")
+    fatalError("Test Crash - This is intentional for testing Crashlytics")
+  }
+  
+  /// 테스트 에러 로그 전송
+  func sendTestError() {
+    let error = NSError(
+      domain: "com.tonemeter.test",
+      code: 9999,
+      userInfo: [
+        NSLocalizedDescriptionKey: "This is a test error for Crashlytics"
+      ]
+    )
+    
+    Crashlytics.crashlytics().record(error: error)
+    successMessage = "테스트 에러가 Crashlytics로 전송되었습니다"
+    print("✅ 테스트 에러 전송 완료")
+    
+    // 3초 후 메시지 제거
+    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+      self.successMessage = nil
+    }
+  }
+  
+  /// 커스텀 로그 전송
+  func sendCustomLog() {
+    Crashlytics.crashlytics().log("User ID: test_user_123")
+    Crashlytics.crashlytics().setCustomValue("Debug", forKey: "build_type")
+    Crashlytics.crashlytics().setCustomValue(appVersion, forKey: "app_version")
+    
+    successMessage = "커스텀 로그가 Crashlytics로 전송되었습니다"
+    print("✅ 커스텀 로그 전송 완료")
+    
+    // 3초 후 메시지 제거
+    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+      self.successMessage = nil
+    }
+  }
+  #endif
 }
