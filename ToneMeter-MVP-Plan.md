@@ -52,23 +52,48 @@
    - 진행 상태 UI (3단계 표시)
    - 결과 화면 UI (점수, 레이블, 키워드, 근거)
 
+8. **ToneMeterTabView 구현** (Home, History, Settings 탭)
+   - ToneMeterTabView.swift (탭 구조)
+   - HomeView.swift (메인 화면)
+   - HomeViewModel.swift (홈 화면 데이터)
+   - StatCard, RecentRecordRow (컴포넌트)
+   - HistoryView.swift (임시)
+   - SettingsView.swift (임시)
+   - ContentView.swift (TabView로 변경)
+   - 미터기 UI (Gauge)
+   - 최근 기록 표시
+
+9. **HistoryView 구현** (분석 기록 리스트 및 상세보기)
+   - HistoryViewModel.swift (기록 관리, 필터, 정렬)
+   - HistoryView.swift (리스트 UI)
+   - DetailView.swift (상세보기)
+   - EmotionRecordRow (리스트 셀)
+   - 필터 기능 (전체/긍정/중립/부정/오늘/이번주)
+   - 정렬 기능 (날짜/점수)
+   - 삭제 기능
+   - 빈 화면 처리
+
+10. **SettingsView 구현** (설정 화면)
+   - SettingsViewModel.swift (설정 데이터 관리)
+   - SettingsView.swift (설정 UI)
+   - LicensesView.swift (라이선스 표시)
+   - Constants.swift (앱 상수 관리)
+   - 통계 섹션 (전체 분석/평균 점수/가장 많은 감정)
+   - 데이터 관리 (캐시 정리/전체 삭제)
+   - 지원 섹션 (문의하기/개인정보 처리방침/라이선스)
+   - 개인정보 처리방침 노션 연동
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-8. **ToneMeterTabView 구현** (Home, History, Settings 탭)
-9. **HomeView + 미터기 UI** (메인 화면, Gauge 컴포넌트)
-10. **HistoryViewModel 구현** (기록 관리)
-11. **HistoryView** (분석 기록 리스트)
-12. **DetailView** (개별 기록 상세보기)
-13. **SettingsViewModel + SettingsView** (설정 화면)
-14. **Launch & Onboarding Views** (LaunchView, OnboardingView)
-15. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
-16. **Theme Colors** (Color+Theme extension)
-17. **Permissions** (권한 요청 로직)
-18. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
-19. **Firebase Setup Guide** (문서 작성)
-20. **README** (프로젝트 문서화)
+11. **Launch & Onboarding Views** (LaunchView, OnboardingView)
+12. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
+13. **Theme Colors** (Color+Theme extension)
+14. **Permissions** (권한 요청 로직)
+15. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+16. **Firebase Setup Guide** (문서 작성)
+17. **README** (프로젝트 문서화)
 
 ---
 
