@@ -107,3 +107,19 @@ iOSInjectionProject/
 *.plist.secret
 secrets.swift
 
+# ToneMeter Specific
+# API Configuration
+**/Config.xcconfig
+
+# Firebase Configuration
+**/GoogleService-Info.plist
+
+# Swift Package Manager
+.swiftpm/
+
+# cursor AI
+ToneMeter-MVP-Plan.md
+
+# Xcode User State
+*.xcuserstate
+
