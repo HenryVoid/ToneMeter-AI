@@ -83,11 +83,20 @@
    - 지원 섹션 (문의하기/개인정보 처리방침/라이선스)
    - 개인정보 처리방침 노션 연동
 
+11. **Launch & Onboarding Views** (LaunchView, OnboardingView)
+   - UserDefaultsKeys.swift (AppStorage 키 관리)
+   - LaunchView.swift (스플래시 화면, 로고 애니메이션)
+   - OnboardingView.swift (4페이지 기능 소개)
+   - OnboardingPageView (페이지 컴포넌트)
+   - ToneMeterApp.swift (Launch → Onboarding → Main 흐름)
+   - AppStorage 온보딩 완료 상태 관리
+   - 페이지 인디케이터
+   - 건너뛰기/다음/시작하기 버튼
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-11. **Launch & Onboarding Views** (LaunchView, OnboardingView)
 12. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
 13. **Theme Colors** (Color+Theme extension)
 14. **Permissions** (권한 요청 로직)
