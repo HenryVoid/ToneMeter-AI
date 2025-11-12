@@ -7,6 +7,11 @@
 [![Swift](https://img.shields.io/badge/Swift-5.9+-F05138?logo=swift&logoColor=white)](https://swift.org)
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-blue?logo=swift)](https://developer.apple.com/xcode/swiftui/)
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/899ad29b-4a9a-4dce-8edf-d1dffab58b4c" width="300" alt="ToneMeter Demo GIF"/>
+</div>
+<br/>
+
 **ToneMeter**는 대화 스크린샷을 분석하여 감정 톤을 **0~100 점수**로 시각화하는 iOS 개인 프로젝트입니다.  
 **Vision Framework**로 텍스트를 추출하고, **OpenAI GPT-4o-mini**로 감정을 분석하여, 직관적인 미터기 UI로 결과를 제공합니다.
 
@@ -29,39 +34,6 @@
 - [🎨 디자인 시스템](#-디자인-시스템)
 - [💡 기술적 하이라이트](#-기술적-하이라이트)
 - [📝 개발 회고](#-개발-회고)
-
----
-
-## 📱 프리뷰
-
-### 🎬 데모 영상
-
-<div align="center">
-  <video src="sample/ToneMeterAI.mp4"
-         width="300"
-         controls
-         muted
-         playsinline
-         loop
-         poster="sample/tonemeter_poster.png">
-    <a href="sample/ToneMeterAI.mp4">Watch the demo video</a>
-  </video>
-</div>
-
-### 📸 스크린샷
-
-<div align="center">
-  
-#### 🚀 온보딩
-<img src="sample/onboarding_1.PNG" width="200"/> <img src="sample/onboarding_2.PNG" width="200"/> <img src="sample/onboarding_3.PNG" width="200"/> <img src="sample/onboarding_4.PNG" width="200"/>
-
-#### 🏠 메인 화면
-<img src="sample/launch.PNG" width="200"/> <img src="sample/home_nodata_screen.PNG" width="200"/> <img src="sample/home_3data_screen.PNG" width="200"/>
-
-#### 📊 분석 & 설정
-<img src="sample/analysis_screen.PNG" width="200"/> <img src="sample/test-success-screen.jpeg" width="200"/> <img src="sample/settings_screen.PNG" width="200"/>
-
-</div>
 
 ---
 
