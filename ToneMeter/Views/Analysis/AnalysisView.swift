@@ -10,9 +10,12 @@ import SwiftUI
 struct AnalysisView: View {
   // ViewModel 연결 (ObservableObject)
   @StateObject private var viewModel = AnalysisViewModel()
+  @StateObject private var permissionManager = PermissionManager.shared
   
   // 이미지 피커 표시 여부
   @State private var showImagePicker = false
+  @State private var showPermissionDenied = false
+  @State private var deniedPermissionType: PermissionType?
   
   var body: some View {
     NavigationView {
@@ -54,6 +57,9 @@ struct AnalysisView: View {
       .sheet(isPresented: $showImagePicker) {
         ImagePicker(image: $viewModel.selectedImage)
       }
+      .sheet(isPresented: $showPermissionDenied) {
+        PermissionDeniedView(permissionType: deniedPermissionType ?? .photoLibrary)
+      }
     }
   }
   
@@ -72,7 +78,7 @@ struct AnalysisView: View {
           .cardShadow()
         
         Button {
-          showImagePicker = true
+          checkPhotoLibraryPermissionAndShowPicker()
         } label: {
           Label("다른 이미지 선택", systemImage: "photo")
         }
@@ -80,19 +86,20 @@ struct AnalysisView: View {
       } else {
         // 이미지 선택 버튼
         Button {
-          showImagePicker = true
+          checkPhotoLibraryPermissionAndShowPicker()
         } label: {
           VStack(spacing: 16) {
             Image(systemName: "photo.on.rectangle.angled")
               .font(.system(size: 60))
-              .foregroundColor(Color.primaryColor.opacity(0.6))
+              .foregroundColor(Color.primaryy.opacity(0.6))
             
             Text("대화 이미지 선택")
               .font(.headline)
+              .foregroundStyle(Color.textBlack)
             
             Text("갤러리에서 대화 스크린샷을 선택해주세요")
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundColor(Color.textSecondary)
           }
           .frame(maxWidth: .infinity)
           .frame(height: 250)
@@ -100,7 +107,7 @@ struct AnalysisView: View {
           .cornerRadius(16)
           .overlay(
             RoundedRectangle(cornerRadius: 16)
-              .stroke(Color.borderAccent, style: StrokeStyle(lineWidth: 2, dash: [10]))
+              .stroke(Color.primaryy, style: StrokeStyle(lineWidth: 2, dash: [10]))
           )
         }
       }
@@ -369,6 +376,36 @@ struct AnalysisView: View {
     case "Neutral": return .orange
     case "Negative": return .red
     default: return .gray
+    }
+  }
+  
+  // MARK: - Permission Check
+  
+  private func checkPhotoLibraryPermissionAndShowPicker() {
+    Task {
+      switch permissionManager.photoLibraryStatus {
+      case .authorized, .limited:
+        // 권한 있음 → 피커 표시
+        showImagePicker = true
+        
+      case .notDetermined:
+        // 권한 요청
+        let granted = await permissionManager.requestPhotoLibraryPermission()
+        if granted {
+          showImagePicker = true
+        } else {
+          deniedPermissionType = .photoLibrary
+          showPermissionDenied = true
+        }
+        
+      case .denied, .restricted:
+        // 권한 거부 → 안내 화면
+        deniedPermissionType = .photoLibrary
+        showPermissionDenied = true
+        
+      @unknown default:
+        break
+      }
     }
   }
 }

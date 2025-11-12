@@ -49,7 +49,7 @@ struct HistoryView: View {
     VStack(spacing: 16) {
       Image(systemName: "tray")
         .font(.system(size: 60))
-        .foregroundColor(.gray)
+        .foregroundColor(Color.primaryy.opacity(0.6))
       
       Text("분석 기록이 없습니다")
         .font(.title3)

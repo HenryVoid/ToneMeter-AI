@@ -11,7 +11,9 @@ struct OnboardingView: View {
   @AppStorage(UserDefaultsKeys.hasCompletedOnboarding)
   private var hasCompletedOnboarding = false
   
+  @StateObject private var permissionManager = PermissionManager.shared
   @State private var currentPage = 0
+  @State private var isRequestingPermissions = false
   
   var body: some View {
     ZStack {
@@ -44,18 +46,26 @@ struct OnboardingView: View {
         // 하단 버튼
         VStack(spacing: 16) {
           if currentPage == pages.count - 1 {
-            // 마지막 페이지: 시작하기 버튼
+            // 마지막 페이지: 권한 허용 버튼
             Button {
-              completeOnboarding()
+              requestPermissionsAndComplete()
             } label: {
-              Text("시작하기")
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(Color.blue)
-                .cornerRadius(16)
+              HStack {
+                if isRequestingPermissions {
+                  ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                } else {
+                  Text("권한 허용하고 시작하기")
+                    .font(.headline)
+                }
+              }
+              .frame(maxWidth: .infinity)
+              .frame(height: 56)
+              .foregroundColor(.white)
+              .background(Color.primaryColor)
+              .cornerRadius(16)
             }
+            .disabled(isRequestingPermissions)
             .transition(.scale.combined(with: .opacity))
           } else {
             // 다음 페이지 버튼
@@ -69,7 +79,7 @@ struct OnboardingView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(Color.blue)
+                .background(Color.primaryColor)
                 .cornerRadius(16)
             }
             
@@ -79,7 +89,7 @@ struct OnboardingView: View {
             } label: {
               Text("건너뛰기")
                 .font(.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.textSecondary)
             }
           }
         }
@@ -90,6 +100,23 @@ struct OnboardingView: View {
   }
   
   // MARK: - Helper Functions
+  
+  private func requestPermissionsAndComplete() {
+    Task {
+      isRequestingPermissions = true
+      
+      // 사진 라이브러리 권한 요청
+      _ = await permissionManager.requestPhotoLibraryPermission()
+      
+      // 카메라 권한 요청 (선택사항)
+      // _ = await permissionManager.requestCameraPermission()
+      
+      isRequestingPermissions = false
+      
+      // 권한 요청 완료 후 온보딩 종료
+      completeOnboarding()
+    }
+  }
   
   private func completeOnboarding() {
     withAnimation {
@@ -122,6 +149,11 @@ struct OnboardingView: View {
       image: "chart.xyaxis.line",
       title: "기록 및 통계",
       description: "모든 데이터는 내 iPhone에만 안전하게 저장되며,\n통계로 확인할 수 있습니다"
+    ),
+    OnboardingPage(
+      image: "photo.badge.checkmark",
+      title: "사진 접근 권한",
+      description: "대화 이미지를 분석하려면\n사진 라이브러리 접근 권한이 필요합니다\n\n다음 단계에서 권한을 허용해주세요"
     )
   ]
 }

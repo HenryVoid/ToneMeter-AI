@@ -126,11 +126,19 @@
    - 모든 헬퍼 함수 Color+Theme로 통일
    - 완전한 디자인 시스템 구축
 
+16. **Permissions (권한 요청 로직 - Option B: 온보딩 통합)**
+   - PermissionManager.swift (권한 관리 싱글톤)
+   - PermissionDeniedView.swift (권한 거부 안내 화면)
+   - OnboardingView에 권한 요청 페이지 추가 (5번째 페이지)
+   - "권한 허용하고 시작하기" 버튼으로 권한 요청
+   - AnalysisView에 권한 체크 추가 (온보딩 건너뛴 경우 대비)
+   - 사진 라이브러리 권한 요청 구현
+   - 설정 앱 이동 기능
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-16. **Permissions** (권한 요청 로직)
 17. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
 18. **Firebase Setup Guide** (문서 작성)
 19. **README** (프로젝트 문서화)
