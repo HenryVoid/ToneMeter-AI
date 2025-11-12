@@ -188,7 +188,7 @@ struct HomeView: View {
         
         NavigationLink("전체보기", destination: HistoryView())
           .font(.subheadline)
-          .foregroundColor(.blue)
+          .foregroundColor(Color.blue)
       }
       
       VStack(spacing: 12) {
@@ -215,100 +215,5 @@ struct HomeView: View {
     case 46..<56: return "중립적"
     default: return "긍정적"
     }
-  }
-}
-
-// MARK: - Supporting Views
-
-/// 통계 카드
-struct StatCard: View {
-  let icon: String
-  let title: String
-  let value: String
-  let color: Color
-  
-  var body: some View {
-    VStack(spacing: 12) {
-      Image(systemName: icon)
-        .font(.title2)
-        .foregroundColor(color)
-      
-      Text(title)
-        .font(.caption)
-        .foregroundColor(Color.textSecondary)
-      
-      Text(value)
-        .font(.headline)
-        .bold()
-    }
-    .frame(maxWidth: .infinity)
-    .padding()
-    .background(color.opacity(0.1))
-    .cornerRadius(12)
-  }
-}
-
-/// 최근 기록 행
-struct RecentRecordRow: View {
-  let record: EmotionRecord
-  
-  var body: some View {
-    HStack(spacing: 12) {
-      // 점수 표시
-      ZStack {
-        Circle()
-          .fill(scoreColor.opacity(0.2))
-          .frame(width: 50, height: 50)
-        
-        Text("\(Int(record.toneScore))")
-          .font(.headline)
-          .bold()
-          .foregroundColor(scoreColor)
-      }
-      
-      // 정보
-      VStack(alignment: .leading, spacing: 4) {
-        Text(record.toneLabel)
-          .font(.subheadline)
-          .bold()
-          .foregroundStyle(Color.textPrimary)
-        
-        Text(formattedDate)
-          .font(.caption)
-          .foregroundColor(Color.textSecondary)
-      }
-      
-      Spacer()
-      
-      // 키워드 미리보기
-      if let firstKeyword = record.toneKeywords.split(separator: ",").first {
-        Text(String(firstKeyword))
-          .font(.caption)
-          .padding(.horizontal, 10)
-          .padding(.vertical, 4)
-          .background(Color.blue.opacity(0.1))
-          .foregroundColor(.blue)
-          .cornerRadius(8)
-      }
-    }
-    .padding()
-    .background(Color.white)
-    .cornerRadius(12)
-    .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-  }
-  
-  private var scoreColor: Color {
-    switch record.toneScore {
-    case 0..<46: return .red
-    case 46..<56: return .orange
-    default: return .green
-    }
-  }
-  
-  private var formattedDate: String {
-    let formatter = RelativeDateTimeFormatter()
-    formatter.locale = Locale(identifier: "ko_KR")
-    formatter.unitsStyle = .short
-    return formatter.localizedString(for: record.createdAt, relativeTo: Date())
   }
 }

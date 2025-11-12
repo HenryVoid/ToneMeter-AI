@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToneMeterTabView: View {
-  @State private var selectedTab: Tab = .home
+  @State private var selectedTab: TMTab = .home
   
   var body: some View {
     TabView(selection: $selectedTab) {
@@ -17,38 +17,29 @@ struct ToneMeterTabView: View {
         .tabItem {
           Label("홈", systemImage: "house.fill")
         }
-        .tag(Tab.home)
+        .tag(TMTab.home)
       
       // 2. Analysis 탭
       AnalysisView()
         .tabItem {
           Label("분석", systemImage: "sparkles")
         }
-        .tag(Tab.analysis)
+        .tag(TMTab.analysis)
       
       // 3. History 탭
       HistoryView()
         .tabItem {
           Label("기록", systemImage: "clock.fill")
         }
-        .tag(Tab.history)
+        .tag(TMTab.history)
       
       // 4. Settings 탭
       SettingsView()
         .tabItem {
           Label("설정", systemImage: "gearshape.fill")
         }
-        .tag(Tab.settings)
+        .tag(TMTab.settings)
     }
-    .tint(.blue) // 탭 선택 색상
-  }
-  
-  // MARK: - Tab Enum
-  
-  enum Tab {
-    case home
-    case analysis
-    case history
-    case settings
+    .tint(Color.primaryy) // 탭 선택 색상
   }
 }
