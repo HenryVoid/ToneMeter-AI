@@ -93,16 +93,47 @@
    - 페이지 인디케이터
    - 건너뛰기/다음/시작하기 버튼
 
+12. **Theme Colors** (Color+Theme extension)
+   - Color+Theme.swift (통일된 색상 팔레트)
+   - Primary/Accent 색상
+   - 감정 톤별 색상 (긍정/중립/부정)
+   - 배경/텍스트/테두리 색상
+   - 그라데이션 (메인, 감정 톤)
+   - 점수/레이블 기반 색상 헬퍼 함수
+   - cardShadow/accentShadow modifier
+   - 다크 모드 자동 지원
+
+13. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
+   - ToneMeterGauge.swift (재사용 가능한 미터기)
+   - EmotionCard.swift (정보 카드)
+   - EmotionChart.swift (막대 차트)
+   - Preview 포함
+   - 크기/색상 커스터마이징 가능
+
+14. **컴포넌트 적용 (리팩토링)**
+   - HomeView에 ToneMeterGauge 적용
+   - 모든 색상 Color+Theme로 통일
+   - cardShadow/accentShadow 적용
+   - AnalysisView 색상 통일
+   - StatCard에 cardShadow 추가
+   - 하드코딩된 색상 제거 완료
+
+15. **추가 컴포넌트 적용 (Option 2)**
+   - DetailView에 ToneMeterGauge 적용
+   - DetailView 색상 통일
+   - SettingsView에 EmotionCard 적용
+   - 통계 섹션 시각화 개선
+   - 모든 헬퍼 함수 Color+Theme로 통일
+   - 완전한 디자인 시스템 구축
+
 ### 🔄 진행 중
 - 없음
 
 ### ⏳ 대기 중
-12. **UI Components** (ToneMeterGauge, EmotionChart, EmotionCard)
-13. **Theme Colors** (Color+Theme extension)
-14. **Permissions** (권한 요청 로직)
-15. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
-16. **Firebase Setup Guide** (문서 작성)
-17. **README** (프로젝트 문서화)
+16. **Permissions** (권한 요청 로직)
+17. **Firebase 초기화** (AppDelegate, Analytics, Crashlytics)
+18. **Firebase Setup Guide** (문서 작성)
+19. **README** (프로젝트 문서화)
 
 ---
 

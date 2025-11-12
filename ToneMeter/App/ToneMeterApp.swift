@@ -24,7 +24,7 @@ struct ToneMeterApp: App {
             .zIndex(1)
         } else if hasCompletedOnboarding {
           // 온보딩 완료 → 메인 앱
-          ContentView()
+          ToneMeterTabView()
         } else {
           // 온보딩 미완료 → 온보딩 화면
           OnboardingView()

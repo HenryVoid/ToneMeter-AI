@@ -70,29 +70,35 @@ struct SettingsView: View {
   /// 통계 섹션
   private var statisticsSection: some View {
     Section {
-      // 전체 분석 횟수
-      HStack {
-        Label("전체 분석", systemImage: "chart.bar.fill")
-        Spacer()
-        Text("\(viewModel.totalAnalysisCount)회")
-          .foregroundColor(Color.textSecondary)
+      VStack(spacing: 16) {
+        HStack(spacing: 16) {
+          // 전체 분석
+          EmotionCard(
+            title: "전체 분석",
+            value: "\(viewModel.totalAnalysisCount)회",
+            icon: "chart.bar.fill",
+            accentColor: Color.primaryColor
+          )
+          
+          // 평균 점수
+          EmotionCard(
+            title: "평균 점수",
+            value: "\(Int(viewModel.averageScore))점",
+            icon: "star.fill",
+            accentColor: Color.emotionColor(for: viewModel.averageScore)
+          )
+        }
+        
+        // 가장 많은 감정
+        EmotionCard(
+          title: "가장 많은 감정",
+          value: emotionLabel(viewModel.mostFrequentEmotion),
+          icon: "face.smiling.fill",
+          accentColor: emotionColor(viewModel.mostFrequentEmotion)
+        )
       }
-      
-      // 평균 점수
-      HStack {
-        Label("평균 점수", systemImage: "star.fill")
-        Spacer()
-        Text("\(Int(viewModel.averageScore))점")
-          .foregroundColor(Color.textSecondary)
-      }
-      
-      // 가장 많은 감정
-      HStack {
-        Label("가장 많은 감정", systemImage: "face.smiling")
-        Spacer()
-        Text(emotionLabel(viewModel.mostFrequentEmotion))
-          .foregroundColor(emotionColor(viewModel.mostFrequentEmotion))
-      }
+      .listRowInsets(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+      .listRowBackground(Color.clear)
     } header: {
       Text("통계")
     }
@@ -228,12 +234,7 @@ struct SettingsView: View {
   }
   
   private func emotionColor(_ emotion: String) -> Color {
-    switch emotion {
-    case "Positive": return .green
-    case "Neutral": return .orange
-    case "Negative": return .red
-    default: return Color.textSecondary
-    }
+    Color.emotionColor(for: emotion)
   }
   
   private func sendEmail() {

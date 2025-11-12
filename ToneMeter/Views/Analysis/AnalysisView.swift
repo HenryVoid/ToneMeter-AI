@@ -69,7 +69,7 @@ struct AnalysisView: View {
           .scaledToFit()
           .frame(maxHeight: 300)
           .cornerRadius(16)
-          .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+          .cardShadow()
         
         Button {
           showImagePicker = true
@@ -85,7 +85,7 @@ struct AnalysisView: View {
           VStack(spacing: 16) {
             Image(systemName: "photo.on.rectangle.angled")
               .font(.system(size: 60))
-              .foregroundColor(.blue.opacity(0.6))
+              .foregroundColor(Color.primaryColor.opacity(0.6))
             
             Text("대화 이미지 선택")
               .font(.headline)
@@ -96,11 +96,11 @@ struct AnalysisView: View {
           }
           .frame(maxWidth: .infinity)
           .frame(height: 250)
-          .background(Color.blue.opacity(0.05))
+          .background(Color.cardBackground)
           .cornerRadius(16)
           .overlay(
             RoundedRectangle(cornerRadius: 16)
-              .stroke(Color.blue.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [10]))
+              .stroke(Color.borderAccent, style: StrokeStyle(lineWidth: 2, dash: [10]))
           )
         }
       }
@@ -118,16 +118,10 @@ struct AnalysisView: View {
         .font(.headline)
         .frame(maxWidth: .infinity)
         .padding()
-        .background(
-          LinearGradient(
-            colors: [Color.blue, Color.blue.opacity(0.8)],
-            startPoint: .leading,
-            endPoint: .trailing
-          )
-        )
+        .background(Color.gradientPrimary)
         .foregroundColor(.white)
         .cornerRadius(12)
-        .shadow(color: .blue.opacity(0.3), radius: 8, x: 0, y: 4)
+        .accentShadow()
     }
   }
   
@@ -141,8 +135,9 @@ struct AnalysisView: View {
       currentStepDescription
     }
     .padding()
-    .background(Color.blue.opacity(0.05))
+    .background(Color.cardBackground)
     .cornerRadius(16)
+    .cardShadow()
   }
   
   /// 단계 인디케이터
@@ -273,8 +268,8 @@ struct AnalysisView: View {
               .font(.subheadline)
               .padding(.horizontal, 16)
               .padding(.vertical, 8)
-              .background(Color.blue.opacity(0.15))
-              .foregroundColor(.blue)
+              .background(Color.primaryColor.opacity(0.15))
+              .foregroundColor(Color.primaryColor)
               .cornerRadius(20)
           }
         }
@@ -308,12 +303,9 @@ struct AnalysisView: View {
       }
     }
     .padding(20)
-    .background(Color.green.opacity(0.05))
+    .background(Color.cardBackground)
     .cornerRadius(16)
-    .overlay(
-      RoundedRectangle(cornerRadius: 16)
-        .stroke(Color.green.opacity(0.3), lineWidth: 2)
-    )
+    .cardShadow()
   }
   
   /// 에러 표시
@@ -338,17 +330,17 @@ struct AnalysisView: View {
         Label("다시 시도", systemImage: "arrow.clockwise")
           .frame(maxWidth: .infinity)
           .padding()
-          .background(Color.red.opacity(0.1))
-          .foregroundColor(.red)
+          .background(Color.emotionNegative.opacity(0.1))
+          .foregroundColor(Color.emotionNegative)
           .cornerRadius(12)
       }
     }
     .padding(20)
-    .background(Color.red.opacity(0.05))
+    .background(Color.cardBackground)
     .cornerRadius(16)
     .overlay(
       RoundedRectangle(cornerRadius: 16)
-        .stroke(Color.red.opacity(0.3), lineWidth: 2)
+        .stroke(Color.emotionNegative.opacity(0.3), lineWidth: 2)
     )
   }
   

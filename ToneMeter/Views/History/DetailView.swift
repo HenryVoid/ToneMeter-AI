@@ -58,18 +58,18 @@ struct DetailView: View {
           .resizable()
           .scaledToFit()
           .cornerRadius(16)
-          .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+          .cardShadow()
       } else {
         RoundedRectangle(cornerRadius: 16)
-          .fill(Color.gray.opacity(0.2))
+          .fill(Color.sectionBackground)
           .frame(height: 200)
           .overlay {
             VStack {
               Image(systemName: "photo")
                 .font(.largeTitle)
-                .foregroundColor(.gray)
+                .foregroundColor(Color.textSecondary)
               Text("이미지 없음")
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.textSecondary)
             }
           }
       }
@@ -79,36 +79,29 @@ struct DetailView: View {
   /// 점수 카드
   private var scoreCard: some View {
     VStack(spacing: 20) {
-      // 큰 점수
-      HStack(alignment: .firstTextBaseline, spacing: 8) {
-        Text("\(Int(record.toneScore))")
-          .font(.system(size: 72, weight: .bold, design: .rounded))
-          .foregroundColor(scoreColor)
-        
-        Text("/ 100")
-          .font(.title)
-          .foregroundColor(.secondary)
-      }
+      // 미터기
+      ToneMeterGauge(score: record.toneScore, size: 180)
       
       // 레이블
-      Text(record.toneLabel)
+      Text(emotionLabel)
         .font(.title2)
         .bold()
         .padding(.horizontal, 24)
         .padding(.vertical, 10)
-        .background(scoreColor.opacity(0.2))
-        .foregroundColor(scoreColor)
+        .background(Color.emotionColor(for: record.toneScore).opacity(0.2))
+        .foregroundColor(Color.emotionColor(for: record.toneScore))
         .cornerRadius(25)
       
       // 날짜
       Text(formattedFullDate)
         .font(.subheadline)
-        .foregroundColor(.secondary)
+        .foregroundColor(Color.textSecondary)
     }
     .frame(maxWidth: .infinity)
     .padding()
-    .background(scoreColor.opacity(0.05))
+    .background(Color.cardBackground)
     .cornerRadius(16)
+    .cardShadow()
   }
   
   /// OCR 텍스트
@@ -121,7 +114,7 @@ struct DetailView: View {
         .font(.body)
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.gray.opacity(0.05))
+        .background(Color.sectionBackground)
         .cornerRadius(12)
     }
   }
@@ -138,8 +131,8 @@ struct DetailView: View {
             .font(.subheadline)
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .background(Color.blue.opacity(0.15))
-            .foregroundColor(.blue)
+            .background(Color.emotionColor(for: record.toneScore).opacity(0.15))
+            .foregroundColor(Color.emotionColor(for: record.toneScore))
             .cornerRadius(20)
         }
       }
@@ -159,7 +152,7 @@ struct DetailView: View {
         InfoRow(title: "ID", value: record.id.uuidString.prefix(8) + "...")
       }
       .padding()
-      .background(Color.gray.opacity(0.05))
+      .background(Color.sectionBackground)
       .cornerRadius(12)
     }
   }
@@ -172,19 +165,19 @@ struct DetailView: View {
       Label("기록 삭제", systemImage: "trash")
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.red.opacity(0.1))
-        .foregroundColor(.red)
+        .background(Color.emotionNegative.opacity(0.1))
+        .foregroundColor(Color.emotionNegative)
         .cornerRadius(12)
     }
   }
   
   // MARK: - Helper Functions
   
-  private var scoreColor: Color {
+  private var emotionLabel: String {
     switch record.toneScore {
-    case 0..<46: return .red
-    case 46..<56: return .orange
-    default: return .green
+    case 70...100: return "긍정적 😊"
+    case 40..<70: return "중립적 😐"
+    default: return "부정적 😢"
     }
   }
   
