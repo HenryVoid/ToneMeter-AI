@@ -1,0 +1,12 @@
+//
+//  Release.xcconfig
+//  ToneMeter
+//
+//  Created by 송형욱 on 11/12/25.
+//
+
+// Configuration Settings File
+DEBUG = false
+
+// OpenAI API Key
+OPENAI_API_KEY = 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
