@@ -1,5 +1,9 @@
 # 🎭 ToneMeter
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/899ad29b-4a9a-4dce-8edf-d1dffab58b4c" width="300" alt="ToneMeter Demo GIF"/>
+</div>
+
 > **대화의 감정 톤을 AI로 분석하는 iOS 앱**  
 > Apple Vision Framework OCR + OpenAI GPT-4o-mini + SwiftUI
 
@@ -29,39 +33,6 @@
 - [🎨 디자인 시스템](#-디자인-시스템)
 - [💡 기술적 하이라이트](#-기술적-하이라이트)
 - [📝 개발 회고](#-개발-회고)
-
----
-
-## 📱 프리뷰
-
-### 🎬 데모 영상
-
-<div align="center">
-  <video src="sample/ToneMeterAI.mp4"
-         width="300"
-         controls
-         muted
-         playsinline
-         loop
-         poster="sample/tonemeter_poster.png">
-    <a href="sample/ToneMeterAI.mp4">Watch the demo video</a>
-  </video>
-</div>
-
-### 📸 스크린샷
-
-<div align="center">
-  
-#### 🚀 온보딩
-<img src="sample/onboarding_1.PNG" width="200"/> <img src="sample/onboarding_2.PNG" width="200"/> <img src="sample/onboarding_3.PNG" width="200"/> <img src="sample/onboarding_4.PNG" width="200"/>
-
-#### 🏠 메인 화면
-<img src="sample/launch.PNG" width="200"/> <img src="sample/home_nodata_screen.PNG" width="200"/> <img src="sample/home_3data_screen.PNG" width="200"/>
-
-#### 📊 분석 & 설정
-<img src="sample/analysis_screen.PNG" width="200"/> <img src="sample/test-success-screen.jpeg" width="200"/> <img src="sample/settings_screen.PNG" width="200"/>
-
-</div>
 
 ---
 
