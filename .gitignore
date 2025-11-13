@@ -123,3 +123,5 @@ ToneMeter-MVP-Plan.md
 # Xcode User State
 *.xcuserstate
 
+# Xcode configuration
+*.xcconfig
