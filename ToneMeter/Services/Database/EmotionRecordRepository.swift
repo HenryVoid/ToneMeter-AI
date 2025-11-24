@@ -48,6 +48,16 @@ class EmotionRecordRepository {
     }
   }
   
+  // READ: imageHash로 레코드 조회 (중복 감지용)
+  func findByImageHash(_ hash: String) throws -> EmotionRecord? {
+    try dbQueue.read { db in
+      try EmotionRecord
+        .filter(Column("imageHash") == hash)
+        .order(Column("createdAt").desc)
+        .fetchOne(db)
+    }
+  }
+  
   // UPDATE: 레코드 수정
   func update(_ record: EmotionRecord) throws {
     _ = try dbQueue.write { db in
