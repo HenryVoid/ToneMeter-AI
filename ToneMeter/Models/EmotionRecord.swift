@@ -12,6 +12,7 @@ struct EmotionRecord: Codable, Identifiable {
   var id: UUID
   var createdAt: Date
   var imagePath: String        // 로컬 이미지 저장 경로
+  var imageHash: String         // 이미지 해시 (SHA256) - 중복 감지용
   var ocrText: String           // OCR로 인식된 텍스트
   var toneScore: Double         // 0~100 감정 점수
   var toneLabel: String         // "Positive", "Neutral", "Negative"
@@ -25,7 +26,7 @@ extension EmotionRecord: FetchableRecord, PersistableRecord {
   
   // 👇 추가: 컬럼 정의
   enum Columns: String, ColumnExpression {
-    case id, createdAt, imagePath, ocrText, toneScore, toneLabel, toneKeywords, modelVersion
+    case id, createdAt, imagePath, imageHash, ocrText, toneScore, toneLabel, toneKeywords, modelVersion
   }
   
   // 👇 추가: UUID를 문자열로 명시적 인코딩
@@ -33,6 +34,7 @@ extension EmotionRecord: FetchableRecord, PersistableRecord {
     container[Columns.id] = id.uuidString  // UUID → String 변환
     container[Columns.createdAt] = createdAt
     container[Columns.imagePath] = imagePath
+    container[Columns.imageHash] = imageHash
     container[Columns.ocrText] = ocrText
     container[Columns.toneScore] = toneScore
     container[Columns.toneLabel] = toneLabel
