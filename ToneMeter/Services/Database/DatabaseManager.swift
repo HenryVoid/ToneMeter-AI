@@ -50,6 +50,15 @@ class DatabaseManager {
       }
     }
     
+    // v2: imageHash 컬럼 추가 (중복 감지용)
+    migrator.registerMigration("addImageHash") { db in
+      try db.alter(table: "emotionRecords") { t in
+        t.add(column: "imageHash", .text)
+      }
+      // 기존 레코드의 imageHash를 빈 문자열로 초기화
+      try db.execute(sql: "UPDATE emotionRecords SET imageHash = '' WHERE imageHash IS NULL")
+    }
+    
     return migrator
   }
   
