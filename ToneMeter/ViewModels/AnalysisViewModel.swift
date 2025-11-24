@@ -67,6 +67,40 @@ class AnalysisViewModel: ObservableObject {
     errorMessage = nil
     currentStep = .idle
     
+    // 중복 이미지 체크: imageHash로 저장된 결과 확인
+    let imageHash = image.sha256Hash()
+    if !imageHash.isEmpty {
+      do {
+        if let existingRecord = try repository.findByImageHash(imageHash) {
+          // 중복 이미지 발견: 저장된 결과를 바로 사용
+          print("🔄 중복 이미지 발견: 저장된 결과 사용")
+          
+          // 저장된 레코드를 ToneAnalysisResult로 변환
+          let keywords = existingRecord.toneKeywords
+            .split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+          
+          analysisResult = ToneAnalysisResult(
+            toneScore: existingRecord.toneScore,
+            toneLabel: existingRecord.toneLabel,
+            toneKeywords: keywords,
+            reasoning: nil
+          )
+          
+          ocrText = existingRecord.ocrText
+          savedRecordId = existingRecord.id
+          currentStep = .completed
+          isProcessing = false
+          
+          print("✅ 저장된 결과 로드 완료: 점수 \(existingRecord.toneScore)")
+          return
+        }
+      } catch {
+        // 중복 체크 실패 시 로그만 남기고 계속 진행
+        print("⚠️ 중복 체크 실패: \(error.localizedDescription)")
+      }
+    }
+    
     do {
       // 1단계: OCR
       currentStep = .performingOCR
@@ -110,10 +144,14 @@ class AnalysisViewModel: ObservableObject {
       
       let imagePath = try saveImageLocally(image)
       
+      // 이미지 해시 생성 (중복 감지용)
+      let imageHash = image.sha256Hash()
+      
       let record = EmotionRecord(
         id: UUID(),
         createdAt: Date(),
         imagePath: imagePath,
+        imageHash: imageHash,
         ocrText: ocrText,
         toneScore: analysisResult!.toneScore,
         toneLabel: analysisResult!.toneLabel,
