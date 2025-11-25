@@ -21,7 +21,7 @@ struct APIConfiguration {
     
     // 기본값 체크 (실제 키가 설정되었는지 확인)
     guard !apiKey.isEmpty && apiKey != "your_openai_api_key_here" else {
-      fatalError("❌ Config.xcconfig에 올바른 OPENAI_API_KEY를 설정해주세요.")
+      fatalError("❌ Debug.xcconfig 또는 Release.xcconfig에 올바른 OPENAI_API_KEY를 설정해주세요.")
     }
     
     return apiKey

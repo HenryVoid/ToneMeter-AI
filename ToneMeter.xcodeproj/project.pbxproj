@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C3708B62ED5DAEB009C0AA7 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */; };
+		6C3708B82ED5DB14009C0AA7 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */; };
 		6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6242EC2C26600F4D497 /* GRDB */; };
 		6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */; };
 		6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneMeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDBE6062EC2B65D00F4D497 /* ToneMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDBE6102EC2B65D00F4D497 /* ToneMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,8 @@
 		6CDBE5ED2EC2B65B00F4D497 = {
 			isa = PBXGroup;
 			children = (
+				6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */,
+				6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */,
 				6CDBE5F82EC2B65B00F4D497 /* ToneMeter */,
 				6CDBE6092EC2B65D00F4D497 /* ToneMeterTests */,
 				6CDBE6132EC2B65D00F4D497 /* ToneMeterUITests */,
@@ -241,6 +247,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3708B82ED5DB14009C0AA7 /* Release.xcconfig in Resources */,
+				6C3708B62ED5DAEB009C0AA7 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,8 +373,7 @@
 		};
 		6CDBE6192EC2B65D00F4D497 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			baseConfigurationReference = 6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -423,8 +430,7 @@
 		};
 		6CDBE61B2EC2B65D00F4D497 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			baseConfigurationReference = 6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,8 +470,7 @@
 		};
 		6CDBE61C2EC2B65D00F4D497 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			baseConfigurationReference = 6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -505,8 +510,7 @@
 		};
 		6CDBE61E2EC2B65D00F4D497 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			baseConfigurationReference = 6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -526,8 +530,7 @@
 		};
 		6CDBE61F2EC2B65D00F4D497 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			baseConfigurationReference = 6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -547,8 +550,7 @@
 		};
 		6CDBE6212EC2B65D00F4D497 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			baseConfigurationReference = 6C3708B52ED5DAEB009C0AA7 /* Debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -566,8 +568,7 @@
 		};
 		6CDBE6222EC2B65D00F4D497 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 6CDBE5F82EC2B65B00F4D497 /* ToneMeter */;
-			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			baseConfigurationReference = 6C3708B72ED5DB14009C0AA7 /* Release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
