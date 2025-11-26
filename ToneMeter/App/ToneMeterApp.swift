@@ -34,10 +34,6 @@ struct ToneMeterApp: App {
         }
       }
       .onAppear {
-#if DEBUG
-        // ⚠️ 테스트용 (테스트 후 삭제!)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.hasCompletedOnboarding)
-#endif
         // Launch Screen 표시 시간 (1.5초)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           withAnimation(.easeOut(duration: 0.3)) {

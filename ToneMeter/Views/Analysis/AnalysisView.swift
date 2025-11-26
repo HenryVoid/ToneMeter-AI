@@ -118,7 +118,7 @@ struct AnalysisView: View {
   private var analyzeButton: some View {
     Button {
       Task {
-        await viewModel.analyzeImage()
+        await viewModel.analyze()
       }
     } label: {
       Label("감정 분석 시작", systemImage: "sparkles")

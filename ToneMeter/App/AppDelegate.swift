@@ -9,6 +9,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAnalytics
 import FirebaseCrashlytics
+import GoogleMobileAds
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(
@@ -17,6 +18,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   ) -> Bool {
     // Firebase 초기화
     FirebaseApp.configure()
+    
+    // AdMob 초기화
+    MobileAds.shared.start()
+    
+    // 첫 광고 미리 로드 (Pre-load)
+    AdMobService.shared.loadAd()
     
 #if DEBUG
     print("✅ Firebase 초기화 완료 (Debug 모드)")
@@ -41,5 +48,3 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     AnalyticsLogger.shared.logAppForeground()
   }
 }
-
-
