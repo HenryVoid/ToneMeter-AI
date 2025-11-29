@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SDK_ID</key>
+	<string>${ADMOB_SDK_ID}</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>${ADMOB_SDK_ID}</string>
+	<key>GADAdUnitID</key>
+	<string>${ADMOB_ID}</string>
 	<key>DEBUG</key>
 	<string>${DEBUG}</string>
 	<key>OPENAI_API_KEY</key>

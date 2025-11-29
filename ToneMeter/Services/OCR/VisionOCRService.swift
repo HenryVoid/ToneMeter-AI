@@ -30,39 +30,50 @@ class VisionOCRService {
       throw OCRError.invalidImage
     }
     
-    let handler = VNImageRequestHandler(
-      cgImage: cgImage,
-      orientation: image.imageOrientation.toCGImageOrientation(),
-      options: [:]
-    )
+    let orientation = image.imageOrientation.toCGImageOrientation()
+    let recognitionLevel = self.recognitionLevel
+    let supportedLanguages = self.supportedLanguages
+    let minimumConfidence = self.minimumConfidence
     
-    let request = VNRecognizeTextRequest()
-    request.recognitionLevel = recognitionLevel
-    request.recognitionLanguages = supportedLanguages
-    request.usesLanguageCorrection = true
-    request.minimumTextHeight = 0.0
-    
-    return try await withCheckedThrowingContinuation { continuation in
-      do {
-        try handler.perform([request])
-        
-        guard let observations = request.results else {
-          continuation.resume(throwing: OCRError.noTextFound)
-          return
-        }
-        
-        let text = self.processObservations(observations)
-        
-        if text.isEmpty {
-          continuation.resume(throwing: OCRError.noTextFound)
-        } else {
-          continuation.resume(returning: text)
-        }
-        
-      } catch {
-        continuation.resume(throwing: OCRError.processingFailed(error))
+    return try await Task.detached(priority: .userInitiated) {
+      let handler = VNImageRequestHandler(
+        cgImage: cgImage,
+        orientation: orientation,
+        options: [:]
+      )
+      
+      let request = VNRecognizeTextRequest()
+      request.recognitionLevel = recognitionLevel
+      request.recognitionLanguages = supportedLanguages
+      request.usesLanguageCorrection = true
+      request.minimumTextHeight = 0.0
+      
+      try handler.perform([request])
+      
+      guard let observations = request.results else {
+        throw OCRError.noTextFound
       }
-    }
+      
+      let recognizedStrings = observations.compactMap { observation -> String? in
+        guard let candidate = observation.topCandidates(1).first else {
+          return nil
+        }
+        
+        guard candidate.confidence >= minimumConfidence else {
+          return nil
+        }
+        
+        return candidate.string
+      }
+      
+      let text = recognizedStrings.joined(separator: "\n")
+      
+      if text.isEmpty {
+        throw OCRError.noTextFound
+      }
+      
+      return text
+    }.value
   }
   
   /// 텍스트와 위치 정보를 함께 반환

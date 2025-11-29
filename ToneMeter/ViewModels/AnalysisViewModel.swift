@@ -56,7 +56,7 @@ class AnalysisViewModel: ObservableObject {
   // MARK: - Public Methods (View가 호출)
   
   /// 전체 분석 플로우 실행
-  func analyzeImage() async {
+  func analyze() async {
     guard let image = selectedImage else {
       errorMessage = "이미지를 선택해주세요"
       return
@@ -67,81 +67,29 @@ class AnalysisViewModel: ObservableObject {
     errorMessage = nil
     currentStep = .idle
     
+    // 중복 이미지 체크
+    if checkDuplicate(image: image) {
+      isProcessing = false
+      return
+    }
+    
     do {
-      // 1단계: OCR
-      currentStep = .performingOCR
-      print("1️⃣ OCR 시작...")
+      // 1단계: OCR 수행
+      let text = try await performOCR(image: image)
       
-      // Analytics: OCR 시작
-      AnalyticsLogger.shared.logOCRStart()
+      // 광고 표시 (OCR 성공 후, 감정 분석 전)
+      await AdMobService.shared.showAd()
       
-      ocrText = try await ocrService.recognizeText(from: image)
+      // 2단계: 감정 분석 수행
+      let result = try await analyzeTone(text: text)
       
-      guard !ocrText.isEmpty else {
-        throw AnalysisError.noTextFound
-      }
+      // 3단계: DB 저장 수행
+      try await saveRecord(image: image, text: text, result: result)
       
-      print("✅ OCR 완료: \(ocrText.prefix(50))...")
-      
-      // Analytics: OCR 성공
-      AnalyticsLogger.shared.logOCRSuccess(textLength: ocrText.count)
-      
-      // 2단계: 감정 분석
-      currentStep = .analyzingTone
-      print("2️⃣ 감정 분석 시작...")
-      
-      // Analytics: 감정 분석 시작
-      AnalyticsLogger.shared.logAnalysisStart()
-      
-      analysisResult = try await apiService.analyzeTone(text: ocrText)
-      
-      print("✅ 감정 분석 완료: 점수 \(analysisResult!.toneScore)")
-      
-      // Analytics: 감정 분석 성공
-      AnalyticsLogger.shared.logAnalysisSuccess(
-        toneScore: analysisResult!.toneScore,
-        toneLabel: analysisResult!.toneLabel,
-        keywordCount: analysisResult!.toneKeywords.count
-      )
-      
-      // 3단계: DB 저장
-      currentStep = .savingToDatabase
-      print("3️⃣ DB 저장 시작...")
-      
-      let imagePath = try saveImageLocally(image)
-      
-      let record = EmotionRecord(
-        id: UUID(),
-        createdAt: Date(),
-        imagePath: imagePath,
-        ocrText: ocrText,
-        toneScore: analysisResult!.toneScore,
-        toneLabel: analysisResult!.toneLabel,
-        toneKeywords: analysisResult!.toneKeywords.joined(separator: ", "),
-        modelVersion: "gpt-4o-mini"
-      )
-      
-      try repository.insert(record)
-      savedRecordId = record.id
-      
-      print("✅ DB 저장 완료")
-      
-      // Analytics: 기록 저장
-      AnalyticsLogger.shared.logRecordSaved(
-        toneScore: record.toneScore,
-        toneLabel: record.toneLabel
-      )
-      
-      // 완료
+      // 완료 처리
       currentStep = .completed
       print("🎉 전체 플로우 완료!")
       
-    } catch let error as OCRError {
-      handleError(error)
-    } catch let error as APIError {
-      handleError(error)
-    } catch let error as AnalysisError {
-      handleError(error)
     } catch {
       handleError(error)
     }
@@ -171,7 +119,117 @@ class AnalysisViewModel: ObservableObject {
     currentStep = .idle
   }
   
-  // MARK: - Private Methods
+  // MARK: - Private Methods (단계별 로직)
+  
+  /// 중복 이미지 체크
+  /// - Returns: 중복 이미지가 있어서 로드에 성공하면 true, 아니면 false
+  private func checkDuplicate(image: UIImage) -> Bool {
+    let imageHash = image.sha256Hash()
+    if imageHash.isEmpty { return false }
+    
+    do {
+      if let existingRecord = try repository.findByImageHash(imageHash) {
+        // 중복 이미지 발견: 저장된 결과 사용
+        print("🔄 중복 이미지 발견: 저장된 결과 사용")
+        
+        let keywords = existingRecord.toneKeywords
+          .split(separator: ",")
+          .map { $0.trimmingCharacters(in: .whitespaces) }
+        
+        analysisResult = ToneAnalysisResult(
+          toneScore: existingRecord.toneScore,
+          toneLabel: existingRecord.toneLabel,
+          toneKeywords: keywords,
+          reasoning: nil
+        )
+        
+        ocrText = existingRecord.ocrText
+        savedRecordId = existingRecord.id
+        currentStep = .completed
+        
+        print("✅ 저장된 결과 로드 완료: 점수 \(existingRecord.toneScore)")
+        return true
+      }
+    } catch {
+      print("⚠️ 중복 체크 실패: \(error.localizedDescription)")
+    }
+    
+    return false
+  }
+  
+  /// 1단계: OCR 수행
+  private func performOCR(image: UIImage) async throws -> String {
+    currentStep = .performingOCR
+    print("1️⃣ OCR 시작...")
+    
+    AnalyticsLogger.shared.logOCRStart()
+    
+    let text = try await ocrService.recognizeText(from: image)
+    
+    guard !text.isEmpty else {
+      throw AnalysisError.noTextFound
+    }
+    
+    print("✅ OCR 완료: \(text.prefix(50))...")
+    AnalyticsLogger.shared.logOCRSuccess(textLength: text.count)
+    
+    // 상태 업데이트
+    self.ocrText = text
+    return text
+  }
+  
+  /// 2단계: 감정 분석 수행
+  private func analyzeTone(text: String) async throws -> ToneAnalysisResult {
+    currentStep = .analyzingTone
+    print("2️⃣ 감정 분석 시작...")
+    
+    AnalyticsLogger.shared.logAnalysisStart()
+    
+    let result = try await apiService.analyzeTone(text: text)
+    
+    print("✅ 감정 분석 완료: 점수 \(result.toneScore)")
+    
+    AnalyticsLogger.shared.logAnalysisSuccess(
+      toneScore: result.toneScore,
+      toneLabel: result.toneLabel,
+      keywordCount: result.toneKeywords.count
+    )
+    
+    // 상태 업데이트
+    self.analysisResult = result
+    return result
+  }
+  
+  /// 3단계: DB 저장 수행
+  private func saveRecord(image: UIImage, text: String, result: ToneAnalysisResult) async throws {
+    currentStep = .savingToDatabase
+    print("3️⃣ DB 저장 시작...")
+    
+    let imagePath = try saveImageLocally(image)
+    let imageHash = image.sha256Hash()
+    
+    let record = EmotionRecord(
+      id: UUID(),
+      createdAt: Date(),
+      imagePath: imagePath,
+      imageHash: imageHash,
+      ocrText: text,
+      toneScore: result.toneScore,
+      toneLabel: result.toneLabel,
+      toneKeywords: result.toneKeywords.joined(separator: ", "),
+      modelVersion: "gpt-4o-mini"
+    )
+    
+    try repository.insert(record)
+    self.savedRecordId = record.id
+    
+    print("✅ DB 저장 완료")
+    
+    AnalyticsLogger.shared.logRecordSaved(
+      toneScore: record.toneScore,
+      toneLabel: record.toneLabel
+    )
+  }
   
   /// 이미지를 로컬에 저장
   private func saveImageLocally(_ image: UIImage) throws -> String {
@@ -194,7 +252,6 @@ class AnalysisViewModel: ObservableObject {
   private func handleError(_ error: Error) {
     currentStep = .failed
     
-    // Analytics: 에러 기록
     var errorType = "unknown"
     var errorDescription = error.localizedDescription
     
@@ -203,31 +260,24 @@ class AnalysisViewModel: ObservableObject {
       errorMessage = ocrError.errorDescription
       errorDescription = ocrError.errorDescription ?? ""
       print("❌ OCR 에러: \(errorDescription)")
-      
-      // Analytics: OCR 실패
       AnalyticsLogger.shared.logOCRFailed(error: errorDescription)
     } else if let apiError = error as? APIError {
       errorType = "api_error"
       errorMessage = apiError.errorDescription
       errorDescription = apiError.errorDescription ?? ""
       print("❌ API 에러: \(errorDescription)")
-      
-      // Analytics: 감정 분석 실패
       AnalyticsLogger.shared.logAnalysisFailed(error: errorDescription)
     } else if let analysisError = error as? AnalysisError {
       errorType = "analysis_error"
       errorMessage = analysisError.errorDescription
       errorDescription = analysisError.errorDescription ?? ""
       print("❌ 분석 에러: \(errorDescription)")
-      
-      // Analytics: 일반 분석 실패
       AnalyticsLogger.shared.logAnalysisFailed(error: errorDescription)
     } else {
       errorMessage = "알 수 없는 오류가 발생했습니다: \(error.localizedDescription)"
       print("❌ 알 수 없는 에러: \(error)")
     }
     
-    // Analytics: 전체 에러 추적
     AnalyticsLogger.shared.logAnalysisError(
       errorType: errorType,
       errorDescription: errorDescription
