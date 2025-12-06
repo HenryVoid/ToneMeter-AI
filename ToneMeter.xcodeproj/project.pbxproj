@@ -13,6 +13,7 @@
 		6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6242EC2C26600F4D497 /* GRDB */; };
 		6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */; };
 		6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */; };
+		6CDBE69A2EC2C37200F4D497 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 				6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */,
 				6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */,
 				6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */,
+				6CDBE69A2EC2C37200F4D497 /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,7 @@
 				6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */,
 				6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */,
 				6C0C9BD92ED71A2F00648EB7 /* GoogleMobileAds */,
+				6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */,
 			);
 			productName = ToneMeter;
 			productReference = 6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */;
@@ -676,6 +679,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
