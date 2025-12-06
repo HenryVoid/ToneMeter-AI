@@ -131,13 +131,6 @@ class SettingsViewModel: ObservableObject {
     }
   }
   
-  /// 앱 버전 가져오기
-  var appVersion: String {
-    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
-    let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
-    return "\(version) (\(build))"
-  }
-  
   // MARK: - Crashlytics (Debug Only)
   
   #if DEBUG
@@ -172,7 +165,7 @@ class SettingsViewModel: ObservableObject {
   func sendCustomLog() {
     Crashlytics.crashlytics().log("User ID: test_user_123")
     Crashlytics.crashlytics().setCustomValue("Debug", forKey: "build_type")
-    Crashlytics.crashlytics().setCustomValue(appVersion, forKey: "app_version")
+    Crashlytics.crashlytics().setCustomValue(AppConstants.appVersion, forKey: "app_version")
     
     successMessage = "커스텀 로그가 Crashlytics로 전송되었습니다"
     print("✅ 커스텀 로그 전송 완료")

@@ -126,7 +126,7 @@ struct SettingsView: View {
       HStack {
         Label("버전", systemImage: "info.circle")
         Spacer()
-        Text(viewModel.appVersion)
+        Text(AppConstants.appVersion)
           .foregroundColor(Color.textSecondary)
       }
       
@@ -237,7 +237,7 @@ struct SettingsView: View {
       Text("개발자")
     } footer: {
       VStack(spacing: 8) {
-        Text("ToneMeter AI v\(viewModel.appVersion)")
+        Text("ToneMeter AI v\(AppConstants.appVersion)")
           .font(.caption)
           .foregroundColor(Color.textSecondary)
       }
@@ -291,7 +291,7 @@ struct SettingsView: View {
     let body = """
         
         ---
-        앱 버전: \(viewModel.appVersion)
+        앱 버전: \(AppConstants.appVersion)
         디바이스: \(UIDevice.current.model)
         iOS: \(UIDevice.current.systemVersion)
         """
