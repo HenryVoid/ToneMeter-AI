@@ -17,6 +17,8 @@ struct ToneMeterApp: App {
   
   @State private var showLaunchScreen = true
   
+  @StateObject private var versionCheck = VersionCheckService.shared
+  
   var body: some Scene {
     WindowGroup {
       ZStack {
@@ -34,12 +36,27 @@ struct ToneMeterApp: App {
         }
       }
       .onAppear {
+        versionCheck.checkVersion()
+        
         // Launch Screen 표시 시간 (1.5초)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           withAnimation(.easeOut(duration: 0.3)) {
             showLaunchScreen = false
           }
         }
+      }
+      .alert("업데이트 알림", isPresented: $versionCheck.needsUpdate) {
+        Button("업데이트 하러 가기", role: .none) {
+          if UIApplication.shared.canOpenURL(versionCheck.appStoreURL) {
+            UIApplication.shared.open(versionCheck.appStoreURL)
+          }
+          // 닫기 버튼을 눌러도 다시 팝업을 띄우거나 앱을 종료해야 함 (강제성을 위해)
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            versionCheck.needsUpdate = true
+          }
+        }
+      } message: {
+        Text("원활한 서비스 이용을 위해 최신 버전으로 업데이트가 필요합니다.")
       }
     }
   }
