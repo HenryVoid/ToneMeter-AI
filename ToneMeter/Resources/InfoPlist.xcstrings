@@ -1,0 +1,13 @@
+{
+  "sourceLanguage" : "ko",
+  "strings" : {
+    "NSPhotoLibraryUsageDescription" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Photo access is required to analyze conversation images." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "대화 이미지를 분석하기 위해 사진 접근이 필요합니다." } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
+
