@@ -72,6 +72,27 @@ enum L10n {
         static let startWithPermissions = String(localized: "onboarding_start_with_permissions")
         static let next = String(localized: "onboarding_next")
         static let skip = String(localized: "onboarding_skip")
+        
+        enum Page1 {
+            static let title = String(localized: "onboarding_page1_title")
+            static let description = String(localized: "onboarding_page1_description")
+        }
+        enum Page2 {
+            static let title = String(localized: "onboarding_page2_title")
+            static let description = String(localized: "onboarding_page2_description")
+        }
+        enum Page3 {
+            static let title = String(localized: "onboarding_page3_title")
+            static let description = String(localized: "onboarding_page3_description")
+        }
+        enum Page4 {
+            static let title = String(localized: "onboarding_page4_title")
+            static let description = String(localized: "onboarding_page4_description")
+        }
+        enum Page5 {
+            static let title = String(localized: "onboarding_page5_title")
+            static let description = String(localized: "onboarding_page5_description")
+        }
     }
     
     enum Error {

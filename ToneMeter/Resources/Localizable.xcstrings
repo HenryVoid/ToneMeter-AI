@@ -289,6 +289,66 @@
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "건너뛰기" } }
       }
     },
+    "onboarding_page1_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Analyze Conversations" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "대화 이미지 분석" } }
+      }
+    },
+    "onboarding_page1_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select or take screenshots of conversations like KakaoTalk or Messages" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "카카오톡, 메시지 등 대화 스크린샷을\n선택하거나 촬영하세요" } }
+      }
+    },
+    "onboarding_page2_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Auto Text Recognition" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "자동 텍스트 인식" } }
+      }
+    },
+    "onboarding_page2_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Accurately extract conversation content using the latest OCR technology" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "최신 OCR 기술로 대화 내용을\n정확하게 추출합니다" } }
+      }
+    },
+    "onboarding_page3_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "AI Emotion Analysis" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "AI 감정 분석" } }
+      }
+    },
+    "onboarding_page3_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Analyze emotion tone on a scale of 0-100 using OpenAI technology" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "OpenAI 기술로 대화의 감정 톤을\n0-100점으로 분석합니다" } }
+      }
+    },
+    "onboarding_page4_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History & Stats" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "기록 및 통계" } }
+      }
+    },
+    "onboarding_page4_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All data is securely stored only on your iPhone and can be checked with statistics" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "모든 데이터는 내 iPhone에만 안전하게 저장되며,\n통계로 확인할 수 있습니다" } }
+      }
+    },
+    "onboarding_page5_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Photo Access Permission" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "사진 접근 권한" } }
+      }
+    },
+    "onboarding_page5_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "To analyze conversation images, photo library access is required. Please grant permission in the next step." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "대화 이미지를 분석하려면\n사진 라이브러리 접근 권한이 필요합니다\n\n다음 단계에서 권한을 허용해주세요" } }
+      }
+    },
     "error_unknown" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "An unknown error occurred" } },
