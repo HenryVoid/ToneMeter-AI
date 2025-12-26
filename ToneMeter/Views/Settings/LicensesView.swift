@@ -25,12 +25,12 @@ struct LicensesView: View {
           url: "https://github.com/firebase/firebase-ios-sdk"
         )
       } header: {
-        Text("사용된 오픈소스")
+        Text(L10n.Settings.usedOpenSource)
       } footer: {
-        Text("이 앱은 위의 오픈소스 라이브러리를 사용합니다.")
+        Text(L10n.Settings.openSourceDescription)
       }
     }
-    .navigationTitle("오픈소스 라이선스")
+    .navigationTitle(L10n.Settings.openSource)
     .navigationBarTitleDisplayMode(.inline)
   }
 }
@@ -47,7 +47,7 @@ struct LicenseRow: View {
       Text(name)
         .font(.headline)
       
-      Text("by \(author)")
+      Text(L10n.Settings.licenseAuthorBy(author))
         .font(.subheadline)
         .foregroundColor(.secondary)
       

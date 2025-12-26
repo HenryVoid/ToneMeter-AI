@@ -19,12 +19,21 @@ enum AnalysisStep: Int {
   
   var description: String {
     switch self {
-    case .idle: return "대기 중"
-    case .performingOCR: return "텍스트 인식 중..."
-    case .analyzingTone: return "감정 분석 중..."
-    case .savingToDatabase: return "저장 중..."
-    case .completed: return "완료!"
-    case .failed: return "실패"
+    case .idle: return L10n.Analysis.Step.idleDescription
+    case .performingOCR: return L10n.Analysis.Step.ocrDescription
+    case .analyzingTone: return L10n.Analysis.Step.analysisDescription
+    case .savingToDatabase: return L10n.Analysis.Step.saveDescription
+    case .completed: return L10n.Analysis.Step.completedDescription
+    case .failed: return L10n.Analysis.Step.failedDescription
+    }
+  }
+  
+  var shortName: String {
+    switch self {
+    case .performingOCR: return L10n.Analysis.Step.ocr
+    case .analyzingTone: return L10n.Analysis.Step.analysis
+    case .savingToDatabase: return L10n.Analysis.Step.save
+    default: return ""
     }
   }
   

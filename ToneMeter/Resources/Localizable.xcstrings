@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
+    "common_app_name" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "ToneMeter AI" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "ToneMeter AI" } }
+      }
+    },
+    "common_app_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reading the conversation's mood in numbers" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "대화의 분위기를 숫자로 읽다" } }
+      }
+    },
     "common_confirm" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Confirm" } },
@@ -23,6 +35,24 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "삭제" } }
+      }
+    },
+    "common_view_all" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View All" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "전체보기" } }
+      }
+    },
+    "common_reset" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "초기화" } }
+      }
+    },
+    "common_retry" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다시 시도" } }
       }
     },
     "home_welcome" : {
@@ -121,6 +151,90 @@
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "오류 발생" } }
       }
     },
+    "analysis_positive_label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Positive 😊" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "긍정적 😊" } }
+      }
+    },
+    "analysis_neutral_label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neutral 😐" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "중립적 😐" } }
+      }
+    },
+    "analysis_negative_label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Negative 😢" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "부정적 😢" } }
+      }
+    },
+    "analysis_select_another_image" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select Another Image" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다른 이미지 선택" } }
+      }
+    },
+    "analysis_start_analysis_action" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Emotion Analysis" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "감정 분석 시작" } }
+      }
+    },
+    "analysis_step_ocr" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OCR" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "텍스트 인식" } }
+      }
+    },
+    "analysis_step_analysis" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Analysis" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "감정 분석" } }
+      }
+    },
+    "analysis_step_save" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "저장" } }
+      }
+    },
+    "analysis_step_idle_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Waiting..." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "대기 중" } }
+      }
+    },
+    "analysis_step_ocr_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recognizing text..." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "텍스트 인식 중..." } }
+      }
+    },
+    "analysis_step_analysis_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Analyzing emotion..." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "감정 분석 중..." } }
+      }
+    },
+    "analysis_step_save_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saving..." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "저장 중..." } }
+      }
+    },
+    "analysis_step_completed_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed!" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "완료!" } }
+      }
+    },
+    "analysis_step_failed_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Failed" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "실패" } }
+      }
+    },
     "history_title" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } },
@@ -143,6 +257,12 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Total Analysis" } },
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "전체 분석" } }
+      }
+    },
+    "history_today_average" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today's Avg" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "오늘 평균" } }
       }
     },
     "history_average_score" : {
@@ -271,6 +391,72 @@
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "오픈소스 라이선스" } }
       }
     },
+    "settings_used_open_source" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Used Open Source" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "사용된 오픈소스" } }
+      }
+    },
+    "settings_open_source_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This app uses the above open source libraries." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "이 앱은 위의 오픈소스 라이브러리를 사용합니다." } }
+      }
+    },
+    "settings_license_author_by %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "by %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "by %@" } }
+      }
+    },
+    "settings_clear_cache" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear Cache" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "캐시 정리" } }
+      }
+    },
+    "settings_clear_cache_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete saved image files. Analysis records are kept." } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "저장된 이미지 파일을 삭제합니다. 분석 기록은 유지됩니다." } }
+      }
+    },
+    "settings_clear_cache_confirm" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "정리" } }
+      }
+    },
+    "settings_delete_data_action" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete All Data" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "전체 데이터 삭제" } }
+      }
+    },
+    "settings_most_frequent_emotion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Most Frequent Emotion" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "가장 많은 감정" } }
+      }
+    },
+    "settings_app_name_label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "App Name" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "앱 이름" } }
+      }
+    },
+    "settings_contact_email_subject" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "[ToneMeter] Contact Support" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "[ToneMeter] 문의하기" } }
+      }
+    },
+    "settings_contact_email_body %@ %@ %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "App Version: %@\nDevice: %@\niOS: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "앱 버전: %@\n디바이스: %@\niOS: %@" } }
+      }
+    },
     "onboarding_start_with_permissions" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Grant Permissions and Start" } },
@@ -349,6 +535,66 @@
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "대화 이미지를 분석하려면\n사진 라이브러리 접근 권한이 필요합니다\n\n다음 단계에서 권한을 허용해주세요" } }
       }
     },
+    "filter_all" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "전체" } }
+      }
+    },
+    "filter_positive" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Positive" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "긍정" } }
+      }
+    },
+    "filter_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neutral" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "중립" } }
+      }
+    },
+    "filter_negative" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Negative" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "부정" } }
+      }
+    },
+    "filter_today" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "오늘" } }
+      }
+    },
+    "filter_this_week" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This Week" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "이번 주" } }
+      }
+    },
+    "sort_latest" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Latest" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "최신순" } }
+      }
+    },
+    "sort_oldest" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Oldest" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "오래된순" } }
+      }
+    },
+    "sort_highest_score" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Highest Score" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "점수 높은순" } }
+      }
+    },
+    "sort_lowest_score" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lowest Score" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "점수 낮은순" } }
+      }
+    },
     "error_unknown" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "An unknown error occurred" } },
@@ -401,6 +647,36 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Failed to parse response" } },
         "ko" : { "stringUnit" : { "state" : "translated", "value" : "응답 파싱에 실패했습니다" } }
+      }
+    },
+    "error_http_error %lld" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "HTTP error occurred (Code: %lld)" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "HTTP 오류 발생 (코드: %lld)" } }
+      }
+    },
+    "error_openai_error %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OpenAI API error: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "OpenAI API 오류: %@" } }
+      }
+    },
+    "error_openai_error_with_code %@ %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OpenAI API error [%@]: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "OpenAI API 오류 [%@]: %@" } }
+      }
+    },
+    "error_invalid_result %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid analysis result: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "분석 결과가 올바르지 않습니다: %@" } }
+      }
+    },
+    "error_network_error %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Network error: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "네트워크 오류: %@" } }
       }
     }
   },

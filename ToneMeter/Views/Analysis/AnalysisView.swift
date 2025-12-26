@@ -46,10 +46,10 @@ struct AnalysisView: View {
         }
         .padding()
       }
-      .navigationTitle("감정 분석")
+      .navigationTitle(L10n.Analysis.title)
       .toolbar {
         if viewModel.selectedImage != nil {
-          Button("초기화") {
+          Button(L10n.Common.reset) {
             viewModel.reset()
           }
         }
@@ -80,7 +80,7 @@ struct AnalysisView: View {
         Button {
           checkPhotoLibraryPermissionAndShowPicker()
         } label: {
-          Label("다른 이미지 선택", systemImage: "photo")
+          Label(L10n.Analysis.selectAnotherImage, systemImage: "photo")
         }
         .buttonStyle(.bordered)
       } else {
@@ -93,11 +93,11 @@ struct AnalysisView: View {
               .font(.system(size: 60))
               .foregroundColor(Color.primaryy.opacity(0.6))
             
-            Text("대화 이미지 선택")
+            Text(L10n.Analysis.selectImage)
               .font(.headline)
               .foregroundStyle(Color.textBlack)
             
-            Text("갤러리에서 대화 스크린샷을 선택해주세요")
+            Text(L10n.Analysis.selectImageDescription)
               .font(.caption)
               .foregroundColor(Color.textSecondary)
           }
@@ -121,7 +121,7 @@ struct AnalysisView: View {
         await viewModel.analyze()
       }
     } label: {
-      Label("감정 분석 시작", systemImage: "sparkles")
+      Label(L10n.Analysis.startAnalysisAction, systemImage: "sparkles")
         .font(.headline)
         .frame(maxWidth: .infinity)
         .padding()
@@ -174,7 +174,7 @@ struct AnalysisView: View {
           .foregroundColor(.white)
       }
       
-      Text(stepShortName(step))
+      Text(step.shortName)
         .font(.caption)
         .foregroundColor(viewModel.currentStep == step ? .primary : .secondary)
     }
@@ -219,14 +219,14 @@ struct AnalysisView: View {
           .font(.title2)
           .foregroundColor(.green)
         
-        Text("분석 완료")
+        Text(L10n.Analysis.completed)
           .font(.title2)
           .bold()
       }
       
       // 점수 (큰 숫자)
       VStack(alignment: .leading, spacing: 12) {
-        Text("감정 점수")
+        Text(L10n.Analysis.toneScore)
           .font(.headline)
           .foregroundColor(.secondary)
         
@@ -245,7 +245,7 @@ struct AnalysisView: View {
       
       // 레이블
       HStack {
-        Text("감정 레이블")
+        Text(L10n.Analysis.toneLabel)
           .font(.headline)
           .foregroundColor(.secondary)
         
@@ -265,7 +265,7 @@ struct AnalysisView: View {
       
       // 키워드
       VStack(alignment: .leading, spacing: 12) {
-        Text("감정 키워드")
+        Text(L10n.Analysis.toneKeywords)
           .font(.headline)
           .foregroundColor(.secondary)
         
@@ -287,7 +287,7 @@ struct AnalysisView: View {
         Divider()
         
         VStack(alignment: .leading, spacing: 12) {
-          Text("분석 근거")
+          Text(L10n.Analysis.reasoning)
             .font(.headline)
             .foregroundColor(.secondary)
           
@@ -302,7 +302,7 @@ struct AnalysisView: View {
       Button {
         viewModel.reset()
       } label: {
-        Label("새로운 분석 시작", systemImage: "arrow.clockwise")
+        Label(L10n.Home.startAnalysis, systemImage: "arrow.clockwise")
           .frame(maxWidth: .infinity)
           .padding()
           .background(Color.gray.opacity(0.1))
@@ -323,7 +323,7 @@ struct AnalysisView: View {
           .font(.title2)
           .foregroundColor(.red)
         
-        Text("오류 발생")
+        Text(L10n.Analysis.error)
           .font(.headline)
       }
       
@@ -334,7 +334,7 @@ struct AnalysisView: View {
       Button {
         viewModel.reset()
       } label: {
-        Label("다시 시도", systemImage: "arrow.clockwise")
+        Label(L10n.Common.retry, systemImage: "arrow.clockwise")
           .frame(maxWidth: .infinity)
           .padding()
           .background(Color.emotionNegative.opacity(0.1))
@@ -352,15 +352,6 @@ struct AnalysisView: View {
   }
   
   // MARK: - Helper Functions
-  
-  private func stepShortName(_ step: AnalysisStep) -> String {
-    switch step {
-    case .performingOCR: return "텍스트 인식"
-    case .analyzingTone: return "감정 분석"
-    case .savingToDatabase: return "저장"
-    default: return ""
-    }
-  }
   
   private func scoreColor(_ score: Double) -> Color {
     switch score {
