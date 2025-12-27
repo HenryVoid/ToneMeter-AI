@@ -11,5 +11,7 @@ import Foundation
 enum UserDefaultsKeys {
     /// 앱 첫 실행 여부
     static let hasCompletedOnboarding = "hasCompletedOnboarding"
+    /// 앱 언어 설정
+    static let appLanguage = "appLanguage"
 }
 

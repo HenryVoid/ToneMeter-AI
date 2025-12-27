@@ -13,6 +13,7 @@
 		6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6242EC2C26600F4D497 /* GRDB */; };
 		6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */; };
 		6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */; };
+		6CDBE69A2EC2C37200F4D497 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 				6CDBE62C2EC2C37200F4D497 /* FirebaseCrashlytics in Frameworks */,
 				6CDBE62A2EC2C37200F4D497 /* FirebaseAnalytics in Frameworks */,
 				6CDBE6252EC2C26600F4D497 /* GRDB in Frameworks */,
+				6CDBE69A2EC2C37200F4D497 /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,7 @@
 				6CDBE6292EC2C37200F4D497 /* FirebaseAnalytics */,
 				6CDBE62B2EC2C37200F4D497 /* FirebaseCrashlytics */,
 				6C0C9BD92ED71A2F00648EB7 /* GoogleMobileAds */,
+				6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */,
 			);
 			productName = ToneMeter;
 			productReference = 6CDBE5F62EC2B65B00F4D497 /* ToneMeter.app */;
@@ -459,7 +462,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -499,7 +502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -525,9 +528,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneMeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneMeter";
 			};
 			name = Debug;
@@ -545,9 +552,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneMeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneMeter";
 			};
 			name = Release;
@@ -563,9 +574,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = ToneMeter;
 			};
 			name = Debug;
@@ -581,9 +596,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonemeter.ToneMeterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = ToneMeter;
 			};
 			name = Release;
@@ -676,6 +695,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		6CDBE6992EC2C37200F4D497 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDBE6282EC2C37200F4D497 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

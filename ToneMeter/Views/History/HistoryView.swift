@@ -21,7 +21,7 @@ struct HistoryView: View {
           recordsList
         }
       }
-      .navigationTitle("분석 기록")
+      .navigationTitle(L10n.History.title)
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Menu {
@@ -51,11 +51,11 @@ struct HistoryView: View {
         .font(.system(size: 60))
         .foregroundColor(Color.primaryy.opacity(0.6))
       
-      Text("분석 기록이 없습니다")
+      Text(L10n.History.noRecord)
         .font(.title3)
         .bold()
       
-      Text("첫 번째 대화를 분석해보세요")
+      Text(L10n.History.startFirstAnalysis)
         .font(.subheadline)
         .foregroundColor(.secondary)
     }
@@ -79,11 +79,11 @@ struct HistoryView: View {
         .onDelete(perform: deleteRecords)
       } header: {
         HStack {
-          Text(viewModel.currentFilter.rawValue)
+          Text(viewModel.currentFilter.displayName)
             .font(.headline)
             .foregroundColor(Color.textBlack)
           Spacer()
-          Text("\(viewModel.filteredRecords.count)개의 기록")
+          Text("\(viewModel.filteredRecords.count)\(L10n.History.countSuffix)")
             .font(.subheadline)
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
@@ -95,11 +95,11 @@ struct HistoryView: View {
   private var statsHeader: some View {
     HStack(spacing: 20) {
       VStack(alignment: .center, spacing: 4) {
-        Text("전체 분석")
+        Text(L10n.History.totalAnalysis)
           .font(.caption)
           .foregroundColor(Color.textSecondary)
         
-        Text("\(viewModel.records.count)회")
+        Text("\(viewModel.records.count)\(L10n.History.countSuffix)")
           .font(.title2)
           .bold()
       }
@@ -108,11 +108,11 @@ struct HistoryView: View {
         .frame(height: 40)
       
       VStack(alignment: .center, spacing: 4) {
-        Text("평균 점수")
+        Text(L10n.History.averageScore)
           .font(.caption)
           .foregroundColor(Color.textSecondary)
         
-        Text("\(averageScore)점")
+        Text("\(averageScore)\(L10n.History.scoreSuffix)")
           .font(.title2)
           .bold()
       }
@@ -122,13 +122,13 @@ struct HistoryView: View {
   
   /// 필터 메뉴
   private var filterMenu: some View {
-    Menu("필터") {
+    Menu(L10n.Common.filter) {
       ForEach(FilterOption.allCases, id: \.self) { filter in
         Button {
           viewModel.changeFilter(filter)
         } label: {
           HStack {
-            Text(filter.rawValue)
+            Text(filter.displayName)
             if viewModel.currentFilter == filter {
               Image(systemName: "checkmark")
             }
@@ -140,13 +140,13 @@ struct HistoryView: View {
   
   /// 정렬 메뉴
   private var sortMenu: some View {
-    Menu("정렬") {
+    Menu(L10n.Common.sort) {
       ForEach(SortOption.allCases, id: \.self) { sort in
         Button {
           viewModel.changeSort(sort)
         } label: {
           HStack {
-            Text(sort.rawValue)
+            Text(sort.displayName)
             if viewModel.currentSort == sort {
               Image(systemName: "checkmark")
             }

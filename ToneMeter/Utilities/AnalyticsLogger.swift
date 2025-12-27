@@ -166,5 +166,21 @@ class AnalyticsLogger {
       "sort": sort
     ])
   }
+  
+  // MARK: - 버전 체크
+  
+  func logVersionCheck(currentVersion: String, minRequiredVersion: String, needsUpdate: Bool) {
+    Analytics.logEvent("version_check", parameters: [
+      "current_version": currentVersion,
+      "min_required_version": minRequiredVersion,
+      "needs_update": needsUpdate ? "true" : "false"
+    ])
+  }
+  
+  func logVersionCheckFailed(error: String) {
+    Analytics.logEvent("version_check_failed", parameters: [
+      "error": error
+    ])
+  }
 }
 
