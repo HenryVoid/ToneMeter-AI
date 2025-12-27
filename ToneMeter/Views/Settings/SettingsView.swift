@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
   @StateObject private var viewModel = SettingsViewModel()
+  @AppStorage(UserDefaultsKeys.appLanguage) private var appLanguage = "ko"
   @State private var showDeleteAlert = false
   @State private var showClearCacheAlert = false
   @State private var showCrashAlert = false
@@ -31,9 +32,11 @@ struct SettingsView: View {
         #if DEBUG
         // 5. Crashlytics 테스트 (Debug 모드만)
         crashlyticsSection
+        // 6. 테스트 섹션
+        testSection
         #endif
-        
-        // 6. 개발자 정보
+                
+        // 7. 개발자 정보
         developerSection
       }
       .navigationTitle(L10n.Settings.title)
@@ -222,7 +225,26 @@ struct SettingsView: View {
       Text("테스트 크래시는 앱을 강제 종료합니다. 크래시 리포트는 Firebase Console에서 확인할 수 있습니다.")
     }
   }
-  #endif
+  
+  /// 테스트 섹션
+  private var testSection: some View {
+    Section {
+      HStack {
+        Label("언어 설정 (Language)", systemImage: "globe")
+        Spacer()
+        Picker("언어 선택", selection: $appLanguage) {
+          Text("한국어 (KR)").tag("ko")
+          Text("English (EN)").tag("en")
+        }
+        .pickerStyle(.menu)
+      }
+    } header: {
+      Text("Test (테스트)")
+    } footer: {
+      Text("테스트를 위한 언어 변경 옵션입니다.")
+    }
+  }
+#endif
   
   /// 개발자 정보
   private var developerSection: some View {

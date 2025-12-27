@@ -15,6 +15,9 @@ struct ToneMeterApp: App {
   @AppStorage(UserDefaultsKeys.hasCompletedOnboarding)
   private var hasCompletedOnboarding = false
   
+  @AppStorage(UserDefaultsKeys.appLanguage)
+  private var appLanguage = "ko"
+  
   @State private var showLaunchScreen = true
   
   @StateObject private var versionCheck = VersionCheckService.shared
@@ -35,6 +38,7 @@ struct ToneMeterApp: App {
           OnboardingView()
         }
       }
+      .environment(\.locale, .init(identifier: appLanguage))
       .onAppear {
         versionCheck.checkVersion()
         
