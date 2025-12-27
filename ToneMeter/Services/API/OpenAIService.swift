@@ -149,26 +149,23 @@ enum APIError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidURL:
-      return "잘못된 API URL입니다."
+      return L10n.Error.invalidURL
     case .invalidResponse:
-      return "서버 응답이 올바르지 않습니다."
+      return L10n.Error.invalidResponse
     case .emptyInput:
-      return "분석할 텍스트가 비어있습니다."
+      return L10n.Error.emptyInput
     case .emptyResponse:
-      return "API 응답이 비어있습니다."
+      return L10n.Error.emptyResponse
     case .httpError(let code):
-      return "HTTP 오류 발생 (코드: \(code))"
+      return L10n.Error.httpError(code)
     case .openAIError(let message, let code):
-      if let code = code {
-        return "OpenAI API 오류 [\(code)]: \(message)"
-      }
-      return "OpenAI API 오류: \(message)"
+      return L10n.Error.openAIError(message, code: code)
     case .parsingFailed:
-      return "응답 파싱에 실패했습니다."
+      return L10n.Error.parsingFailed
     case .invalidResult(let reason):
-      return "분석 결과가 올바르지 않습니다: \(reason)"
+      return L10n.Error.invalidResult(reason)
     case .networkError(let error):
-      return "네트워크 오류: \(error.localizedDescription)"
+      return L10n.Error.networkError(error.localizedDescription)
     }
   }
 }

@@ -11,9 +11,19 @@ import Foundation
 
 extension OpenAIService {
   
+  /// 현재 사용자의 언어 코드 (ko, en 등)
+  private var currentLanguage: String {
+    if #available(iOS 16, *) {
+      return Locale.current.language.languageCode?.identifier ?? "en"
+    } else {
+      return Locale.current.languageCode ?? "en"
+    }
+  }
+  
   /// 감정 분석을 위한 시스템 프롬프트
   internal var systemPrompt: String {
-        """
+    if currentLanguage == "ko" {
+      return """
         당신은 대화 텍스트의 감정 톤을 정확하게 분석하는 AI 전문가입니다.
         
         다음 규칙을 따라 분석해주세요:
@@ -22,11 +32,23 @@ extension OpenAIService {
         3. 문맥과 뉘앙스를 파악하여 정확한 감정 파악
         4. 반드시 JSON 형식으로만 응답
         """
+    } else {
+      return """
+        You are an AI expert specializing in accurately analyzing the emotional tone of conversation texts.
+        
+        Please follow these rules for analysis:
+        1. Comprehensively judge the overall atmosphere and emotions of the conversation.
+        2. Consider positive, neutral, and negative elements together.
+        3. Identify precise emotions by understanding context and nuances.
+        4. Respond strictly in JSON format only.
+        """
+    }
   }
   
   /// 감정 분석 사용자 프롬프트 생성
   internal func createAnalysisPrompt(text: String) -> String {
-        """
+    if currentLanguage == "ko" {
+      return """
         다음 대화 텍스트의 감정 톤을 분석해주세요:
         
         \"\"\"
@@ -56,5 +78,37 @@ extension OpenAIService {
         
         키워드는 3~5개의 감정을 나타내는 단어로 작성해주세요.
         """
+    } else {
+      return """
+        Please analyze the emotional tone of the following conversation text:
+        
+        \"\"\"
+        \(text)
+        \"\"\"
+        
+        Please respond exactly in the JSON format below:
+        
+        {
+          "toneScore": <Number between 0 and 100>,
+          "toneLabel": "<Positive or Neutral or Negative>",
+          "toneKeywords": ["keyword1", "keyword2", "keyword3"],
+          "reasoning": "<Explanation of analysis reasoning>"
+        }
+        
+        Score Criteria:
+        - 0~30: Very Negative (Anger, Annoyance, Dissatisfaction, etc.)
+        - 31~45: Negative (Discomfort, Worry, Depression, etc.)
+        - 46~55: Neutral (Casual, Fact-delivery, etc.)
+        - 56~70: Positive (Joy, Satisfaction, Comfort, etc.)
+        - 71~100: Very Positive (Gratitude, Love, Happiness, etc.)
+        
+        Label Criteria:
+        - Negative: 0~45 points
+        - Neutral: 46~55 points
+        - Positive: 56~100 points
+        
+        Please write 3 to 5 words representing the emotions for keywords.
+        """
+    }
   }
 }

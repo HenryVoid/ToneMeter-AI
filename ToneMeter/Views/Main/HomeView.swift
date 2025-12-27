@@ -48,11 +48,11 @@ struct HomeView: View {
   /// 환영 헤더
   private var welcomeHeader: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text("안녕하세요! 👋")
+      Text(L10n.Home.welcome)
         .font(.title2)
         .bold()
       
-      Text("오늘의 대화 감정을 분석해보세요")
+      Text(L10n.Home.subtitle)
         .font(.subheadline)
         .foregroundColor(.secondary)
     }
@@ -62,7 +62,7 @@ struct HomeView: View {
   /// 미터기 섹션
   private var toneMeterSection: some View {
     VStack(spacing: 16) {
-      Text("오늘의 감정 톤")
+      Text(L10n.Home.todayTone)
         .font(.headline)
       
       // 미터기 컴포넌트
@@ -89,16 +89,16 @@ struct HomeView: View {
       // 전체 분석 횟수
       StatCard(
         icon: "chart.bar.fill",
-        title: "전체 분석",
-        value: "\(viewModel.totalAnalysisCount)회",
+        title: L10n.History.totalAnalysis,
+        value: "\(viewModel.totalAnalysisCount)\(L10n.History.countSuffix)",
         color: Color.primaryColor
       )
       
       // 오늘 평균
       StatCard(
         icon: "calendar",
-        title: "오늘 평균",
-        value: "\(Int(viewModel.todayAverageScore))점",
+        title: L10n.History.todayAverage,
+        value: "\(Int(viewModel.todayAverageScore))\(L10n.History.scoreSuffix)",
         color: Color.emotionColor(for: viewModel.todayAverageScore)
       )
     }
@@ -107,7 +107,7 @@ struct HomeView: View {
   /// 빠른 액션
   private var quickActionsSection: some View {
     VStack(spacing: 12) {
-      Text("빠른 시작")
+      Text(L10n.Home.quickStart)
         .font(.headline)
         .frame(maxWidth: .infinity, alignment: .leading)
       
@@ -121,11 +121,11 @@ struct HomeView: View {
             .cornerRadius(12)
           
           VStack(alignment: .leading, spacing: 4) {
-            Text("새로운 분석 시작")
+            Text(L10n.Home.startAnalysis)
               .font(.headline)
               .foregroundColor(Color.primaryColor)
             
-            Text("대화 이미지를 분석해보세요")
+            Text(L10n.Home.analysisDescription)
               .font(.caption)
               .foregroundColor(Color.textSecondary)
           }
@@ -148,12 +148,12 @@ struct HomeView: View {
   private var recentRecordsSection: some View {
     VStack(spacing: 12) {
       HStack {
-        Text("최근 분석")
+        Text(L10n.Home.recentAnalysis)
           .font(.headline)
         
         Spacer()
         
-        NavigationLink("전체보기", destination: HistoryView())
+        NavigationLink(L10n.Common.viewAll, destination: HistoryView())
           .font(.subheadline)
           .foregroundColor(Color.primaryColor)
       }
@@ -170,9 +170,9 @@ struct HomeView: View {
   
   private func scoreLabel(_ score: Double) -> String {
     switch score {
-    case 70...100: return "긍정적 😊"
-    case 40..<70: return "중립적 😐"
-    default: return "부정적 😢"
+    case 70...100: return L10n.Analysis.positiveLabel
+    case 40..<70: return L10n.Analysis.neutralLabel
+    default: return L10n.Analysis.negativeLabel
     }
   }
 }

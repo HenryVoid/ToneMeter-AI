@@ -16,11 +16,11 @@ enum AnalysisError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .noTextFound:
-      return "이미지에서 텍스트를 찾을 수 없습니다"
+      return L10n.Error.noTextFound
     case .imageCompressionFailed:
-      return "이미지 압축에 실패했습니다"
+      return L10n.Error.imageCompressionFailed
     case .imageNotSelected:
-      return "이미지를 선택해주세요"
+      return L10n.Error.imageNotSelected
     }
   }
 }

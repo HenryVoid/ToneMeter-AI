@@ -55,7 +55,7 @@ struct OnboardingView: View {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
-                  Text("권한 허용하고 시작하기")
+                  Text(L10n.Onboarding.startWithPermissions)
                     .font(.headline)
                 }
               }
@@ -74,7 +74,7 @@ struct OnboardingView: View {
                 currentPage += 1
               }
             } label: {
-              Text("다음")
+              Text(L10n.Onboarding.next)
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -89,7 +89,7 @@ struct OnboardingView: View {
               AnalyticsLogger.shared.logOnboardingSkipped(currentPage: currentPage)
               completeOnboarding()
             } label: {
-              Text("건너뛰기")
+              Text(L10n.Onboarding.skip)
                 .font(.subheadline)
                 .foregroundColor(Color.textSecondary)
             }
@@ -136,28 +136,28 @@ struct OnboardingView: View {
   private let pages: [OnboardingPage] = [
     OnboardingPage(
       image: "photo.on.rectangle.angled",
-      title: "대화 이미지 분석",
-      description: "카카오톡, 메시지 등 대화 스크린샷을\n선택하거나 촬영하세요"
+      title: L10n.Onboarding.Page1.title,
+      description: L10n.Onboarding.Page1.description
     ),
     OnboardingPage(
       image: "text.viewfinder",
-      title: "자동 텍스트 인식",
-      description: "최신 OCR 기술로 대화 내용을\n정확하게 추출합니다"
+      title: L10n.Onboarding.Page2.title,
+      description: L10n.Onboarding.Page2.description
     ),
     OnboardingPage(
       image: "brain.head.profile",
-      title: "AI 감정 분석",
-      description: "OpenAI 기술로 대화의 감정 톤을\n0-100점으로 분석합니다"
+      title: L10n.Onboarding.Page3.title,
+      description: L10n.Onboarding.Page3.description
     ),
     OnboardingPage(
       image: "chart.xyaxis.line",
-      title: "기록 및 통계",
-      description: "모든 데이터는 내 iPhone에만 안전하게 저장되며,\n통계로 확인할 수 있습니다"
+      title: L10n.Onboarding.Page4.title,
+      description: L10n.Onboarding.Page4.description
     ),
     OnboardingPage(
       image: "photo.badge.checkmark",
-      title: "사진 접근 권한",
-      description: "대화 이미지를 분석하려면\n사진 라이브러리 접근 권한이 필요합니다\n\n다음 단계에서 권한을 허용해주세요"
+      title: L10n.Onboarding.Page5.title,
+      description: L10n.Onboarding.Page5.description
     )
   ]
 }

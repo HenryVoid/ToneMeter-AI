@@ -29,13 +29,13 @@ struct AppConstants {
   // MARK: - App Info
   
   /// 앱 이름
-  static let appName = "ToneMeter AI"
+  static let appName = L10n.Common.appName
   
   /// 개발팀 이름
   static let developerName = "Hyungwook Song"
   
   /// 앱 설명
-  static let appDescription = "대화의 분위기를 숫자로 읽다"
+  static let appDescription = L10n.Common.appDescription
   
   /// 앱 버전
   static var appVersion: String {

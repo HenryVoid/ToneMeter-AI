@@ -36,32 +36,32 @@ struct SettingsView: View {
         // 6. 개발자 정보
         developerSection
       }
-      .navigationTitle("설정")
+      .navigationTitle(L10n.Settings.title)
       .task {
         await viewModel.loadStatistics()
       }
       .refreshable {
         await viewModel.loadStatistics()
       }
-      .alert("전체 데이터 삭제", isPresented: $showDeleteAlert) {
-        Button("취소", role: .cancel) {}
-        Button("삭제", role: .destructive) {
+      .alert(L10n.Settings.deleteDataTitle, isPresented: $showDeleteAlert) {
+        Button(L10n.Common.cancel, role: .cancel) {}
+        Button(L10n.Common.delete, role: .destructive) {
           Task {
             await viewModel.deleteAllData()
           }
         }
       } message: {
-        Text("모든 분석 기록과 이미지가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.")
+        Text(L10n.Settings.deleteDataConfirm)
       }
-      .alert("캐시 정리", isPresented: $showClearCacheAlert) {
-        Button("취소", role: .cancel) {}
-        Button("정리", role: .destructive) {
+      .alert(L10n.Settings.clearCache, isPresented: $showClearCacheAlert) {
+        Button(L10n.Common.cancel, role: .cancel) {}
+        Button(L10n.Settings.clearCacheConfirm, role: .destructive) {
           Task {
             await viewModel.clearCache()
           }
         }
       } message: {
-        Text("저장된 이미지 파일을 삭제합니다. 분석 기록은 유지됩니다.")
+        Text(L10n.Settings.clearCacheDescription)
       }
       #if DEBUG
       .alert("테스트 크래시", isPresented: $showCrashAlert) {
@@ -90,16 +90,16 @@ struct SettingsView: View {
         HStack(spacing: 16) {
           // 전체 분석
           EmotionCard(
-            title: "전체 분석",
-            value: "\(viewModel.totalAnalysisCount)회",
+            title: L10n.History.totalAnalysis,
+            value: "\(viewModel.totalAnalysisCount)\(L10n.History.countSuffix)",
             icon: "chart.bar.fill",
             accentColor: Color.primaryColor
           )
           
           // 평균 점수
           EmotionCard(
-            title: "평균 점수",
-            value: "\(Int(viewModel.averageScore))점",
+            title: L10n.History.averageScore,
+            value: "\(Int(viewModel.averageScore))\(L10n.History.scoreSuffix)",
             icon: "star.fill",
             accentColor: Color.emotionColor(for: viewModel.averageScore)
           )
@@ -107,7 +107,7 @@ struct SettingsView: View {
         
         // 가장 많은 감정
         EmotionCard(
-          title: "가장 많은 감정",
+          title: L10n.Settings.mostFrequentEmotion,
           value: emotionLabel(viewModel.mostFrequentEmotion),
           icon: "face.smiling.fill",
           accentColor: emotionColor(viewModel.mostFrequentEmotion)
@@ -116,7 +116,7 @@ struct SettingsView: View {
       .listRowInsets(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
       .listRowBackground(Color.clear)
     } header: {
-      Text("통계")
+      Text(L10n.Settings.statistics)
     }
   }
   
@@ -124,20 +124,20 @@ struct SettingsView: View {
   private var appInfoSection: some View {
     Section {
       HStack {
-        Label("버전", systemImage: "info.circle")
+        Label(L10n.Settings.version, systemImage: "info.circle")
         Spacer()
         Text(AppConstants.appVersion)
           .foregroundColor(Color.textSecondary)
       }
       
       HStack {
-        Label("앱 이름", systemImage: "app.badge")
+        Label(L10n.Settings.appNameLabel, systemImage: "app.badge")
         Spacer()
         Text(AppConstants.appName)
           .foregroundColor(Color.textSecondary)
       }
     } header: {
-      Text("앱 정보")
+      Text(L10n.Settings.appInfo)
     }
   }
   
@@ -148,19 +148,19 @@ struct SettingsView: View {
       Button {
         showClearCacheAlert = true
       } label: {
-        Label("캐시 정리", systemImage: "arrow.clockwise")
+        Label(L10n.Settings.clearCache, systemImage: "arrow.clockwise")
       }
       
       // 전체 삭제
       Button(role: .destructive) {
         showDeleteAlert = true
       } label: {
-        Label("전체 데이터 삭제", systemImage: "trash")
+        Label(L10n.Settings.deleteDataAction, systemImage: "trash")
       }
     } header: {
-      Text("데이터 관리")
+      Text(L10n.Settings.dataManagement)
     } footer: {
-      Text("전체 데이터 삭제 시 모든 분석 기록과 이미지가 영구적으로 삭제됩니다.")
+      Text(L10n.Settings.deleteDataDescription)
     }
   }
   
@@ -171,13 +171,13 @@ struct SettingsView: View {
       Button {
         sendEmail()
       } label: {
-        Label("문의하기", systemImage: "envelope")
+        Label(L10n.Settings.contact, systemImage: "envelope")
       }
       
       // 개인정보 처리방침 (노션)
       if let privacyURL = URL(string: AppConstants.privacyPolicyURL) {
         Link(destination: privacyURL) {
-          Label("개인정보 처리방침", systemImage: "hand.raised")
+          Label(L10n.Settings.privacyPolicy, systemImage: "hand.raised")
         }
       }
       
@@ -185,10 +185,10 @@ struct SettingsView: View {
       NavigationLink {
         LicensesView()
       } label: {
-        Label("오픈소스 라이선스", systemImage: "doc.text")
+        Label(L10n.Settings.openSource, systemImage: "doc.text")
       }
     } header: {
-      Text("지원")
+      Text(L10n.Settings.support)
     }
   }
   
@@ -228,13 +228,13 @@ struct SettingsView: View {
   private var developerSection: some View {
     Section {
       HStack {
-        Label("개발자", systemImage: "person.circle")
+        Label(L10n.Settings.developer, systemImage: "person.circle")
         Spacer()
         Text(AppConstants.developerName)
           .foregroundColor(Color.textSecondary)
       }
     } header: {
-      Text("개발자")
+      Text(L10n.Settings.developer)
     } footer: {
       VStack(spacing: 8) {
         Text("ToneMeter AI v\(AppConstants.appVersion)")
@@ -274,9 +274,9 @@ struct SettingsView: View {
   
   private func emotionLabel(_ emotion: String) -> String {
     switch emotion {
-    case "Positive": return "긍정적"
-    case "Neutral": return "중립적"
-    case "Negative": return "부정적"
+    case "Positive": return L10n.Analysis.positiveLabel
+    case "Neutral": return L10n.Analysis.neutralLabel
+    case "Negative": return L10n.Analysis.negativeLabel
     default: return emotion
     }
   }
@@ -286,15 +286,13 @@ struct SettingsView: View {
   }
   
   private func sendEmail() {
-    let email = "chicazic@gmail.com"
-    let subject = "[ToneMeter] 문의하기"
-    let body = """
-        
-        ---
-        앱 버전: \(AppConstants.appVersion)
-        디바이스: \(UIDevice.current.model)
-        iOS: \(UIDevice.current.systemVersion)
-        """
+    let email = AppConstants.supportEmail
+    let subject = L10n.Settings.contactEmailSubject
+    let body = L10n.Settings.contactEmailBody(
+        version: AppConstants.appVersion,
+        device: UIDevice.current.model,
+        os: UIDevice.current.systemVersion
+    )
     
     let urlString = "mailto:\(email)?subject=\(subject)&body=\(body)"
       .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
